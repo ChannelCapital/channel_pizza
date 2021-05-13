@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.List;
 
 @Document(collection = "order")
 public class Order {
@@ -11,13 +12,15 @@ public class Order {
     @Id
     private String id;
     private String userID;
-    private Pizza pizza;
+    private List<Pizza> pizzaID;
     private Date date;
+    private double orderTotal;
 
-    public Order(String userID, Pizza pizza, Date date) {
+    public Order(String userID, List<Pizza> pizzaID, Date date, double orderTotal) {
         this.userID = userID;
-        this.pizza = pizza;
+        this.pizzaID = pizzaID;
         this.date = date;
+        this.orderTotal = orderTotal;
     }
 
     public String getId() {
@@ -28,20 +31,20 @@ public class Order {
         this.id = id;
     }
 
-    public String getUser() {
+    public String getUserID() {
         return userID;
     }
 
-    public void setUser(String userID) {
+    public void setUserID(String userID) {
         this.userID = userID;
     }
 
-    public Pizza getMeal() {
-        return pizza;
+    public List<Pizza> getPizzaID() {
+        return pizzaID;
     }
 
-    public void setMeal(Pizza pizza) {
-        this.pizza = pizza;
+    public void setPizzaID(List<Pizza> pizzaID) {
+        this.pizzaID = pizzaID;
     }
 
     public Date getDate() {
@@ -50,6 +53,14 @@ public class Order {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public double getOrderTotal() {
+        return orderTotal;
+    }
+
+    public void setOrderTotal(double orderTotal) {
+        this.orderTotal = orderTotal;
     }
 
     @Override

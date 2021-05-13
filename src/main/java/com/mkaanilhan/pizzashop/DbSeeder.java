@@ -28,24 +28,43 @@ public class DbSeeder implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Pizza pizza1 =  new Pizza("Kebab Pizza", 7.99, null);
-        Pizza pizza2 =  new Pizza("New York Pizza", 3.99, null);
-        Pizza pizza3 =  new Pizza("Chicago Pizza", 4.99, null);
-        Pizza pizza4 =  new Pizza("Neapolitan Pizza", 5.99, null );
-        Pizza pizza5 =  new Pizza("Veggie Pizza", 2.99, null);
+        Pizza pizza1 =  new Pizza("https://i.imgur.com/cuuINKd.jpg",
+                "Kebab Pizza",
+                8.00,
+                "Grill chicken chunks. red onions, jalapeno");
 
+        Pizza pizza2 =  new Pizza("https://i.imgur.com/1Mx7wvQ.jpg",
+                "New York Pizza",
+                3.00,
+                "Double pepperoni and mix peppers");
 
-        User user1 = new User("kaan@mail.com", "123", "Kozyatagi", new ArrayList<>(), new ArrayList<>());
+        Pizza pizza3 =  new Pizza("https://i.imgur.com/JWI3ylK.jpg",
+                "Chicago Pizza",
+                4.00,
+                "Mince meat, achar, mix peppers and sweetcorn");
+
+        Pizza pizza4 =  new Pizza("https://i.imgur.com/lEtBhSq.jpg",
+                "Neapolitan Pizza",
+                5.00,
+                "Cheese & Tomato" );
+
+        Pizza pizza5 =  new Pizza("https://i.imgur.com/SxViCb3.jpg",
+                "Veggie Pizza",
+                2.00,
+                "Mushrooms, green peppers, sweetcorn, red onion");
+
+        Pizza pizza6 =  new Pizza("https://i.imgur.com/M7LEQkU.jpg",
+                "Mexican Pizza",
+                5.00,
+                "Mince meat, red onion. mix pepper, jalapeno");
+
 
         this.userRepository.deleteAll();
         this.pizzaRepository.deleteAll();
         this.orderRepository.deleteAll();
 
-        List<Pizza> pizzas = Arrays.asList(pizza1,pizza2,pizza3,pizza4,pizza5);
-        List<User> users = Arrays.asList(user1);
+        List<Pizza> pizzas = Arrays.asList(pizza1,pizza2,pizza3,pizza4,pizza5, pizza6);
 
-
-        this.userRepository.saveAll(users);
         this.pizzaRepository.saveAll(pizzas);
 
     }

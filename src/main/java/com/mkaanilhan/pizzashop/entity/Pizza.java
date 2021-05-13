@@ -8,12 +8,14 @@ public class Pizza {
 
     @Id
     private String id;
+    private String img;
     private String name;
     private double price;
     private String description;
 
 
-    public Pizza(String name, double price, String description) {
+    public Pizza(String img, String name, double price, String description) {
+        this.img = img;
         this.name = name;
         this.price = price;
         this.description = description;
@@ -25,6 +27,14 @@ public class Pizza {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getName() {
@@ -53,7 +63,7 @@ public class Pizza {
 
     @Override
     public String toString() {
-        return "Meal{" +
+        return "Pizza{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

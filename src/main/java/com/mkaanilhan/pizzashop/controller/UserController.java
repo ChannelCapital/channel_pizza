@@ -1,10 +1,7 @@
 package com.mkaanilhan.pizzashop.controller;
 
 
-import com.mkaanilhan.pizzashop.entity.ApiResponse;
-import com.mkaanilhan.pizzashop.entity.Pizza;
-import com.mkaanilhan.pizzashop.entity.User;
-import com.mkaanilhan.pizzashop.entity.UserLogin;
+import com.mkaanilhan.pizzashop.entity.*;
 import com.mkaanilhan.pizzashop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,47 +10,93 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/user")
 public class UserController {
 
     @Autowired
     UserService userService;
 
-    @PostMapping("/login")
-    public User login(@RequestBody UserLogin login){
+    //login
+    @PostMapping("/signin")
+    public User signIn(@RequestBody UserLogin login) {
 
-        return userService.login(login);
-
-    }
-
-    @GetMapping("/all")
-    public List<User> getUsers() {
-
-        return userService.getUsers();
+        return userService.signIn(login);
 
     }
 
-    @PostMapping("/add")
+    //all
+    @GetMapping("/alluser")
+    public List<User> getAllUser() {
+
+        return userService.getAllUser();
+
+    }
+
+    //add
+    @PostMapping("/adduser")
     public void addUser(@RequestBody User user) {
 
         user.setFavorites(new ArrayList<>());
         user.setOrders(new ArrayList<>());
+        user.setBasket(new ArrayList<>());
 
         userService.addUser(user);
 
     }
 
-    @PostMapping("/adduserfavorites")
-    public void addFavorites(@RequestBody ApiResponse apiResponse) {
+    //adduserfavorites
+    @PostMapping("/addfavorite")
+    public void addFavorite(@RequestBody PizzaResponse pizzaResponse) {
 
-        userService.addFavorites(apiResponse);
+        userService.addFavorite(pizzaResponse);
 
     }
 
-    @GetMapping("/getfavoritesbyuser/{userID}")
-    public List<Pizza> getFavoritesByUser(@PathVariable String userID){
+    //getfavoritesbyuser
+    @GetMapping("/getfavoritebyuser/{userID}")
+    public List<Pizza> getFavoriteByUser(@PathVariable String userID) {
 
-        return userService.getFavoritesByUser(userID);
+        return userService.getFavoriteByUser(userID);
+
+    }
+
+    //addbasketfavorites
+    @PostMapping("/addbasket")
+    public void addBasket(@RequestBody PizzaResponse pizzaResponse) {
+
+        userService.addBasket(pizzaResponse);
+
+    }
+
+    @GetMapping("/getbasketbyuser/{userID}")
+    public List<Pizza> getBasketByUser(@PathVariable String userID) {
+
+        return userService.getBasketByUser(userID);
+
+    }
+
+    //update
+    @PostMapping("/updateuser")
+    public void updateUser(@RequestBody User user) {
+
+        userService.updateUser(user);
+
+    }
+
+    //removeitem
+    @PostMapping("/removebasketitem")
+    public void removeBasketItem(@RequestBody PizzaResponse pizzaResponse){
+
+        userService.removeBasketItem(pizzaResponse);
+
+    }
+
+    //removefromfav
+    @PostMapping("/removefavoriteitem")
+    public void removeFavoriteItem(@RequestBody PizzaResponse pizzaResponse){
+
+        userService.removeFavoriteItem(pizzaResponse);
 
     }
 

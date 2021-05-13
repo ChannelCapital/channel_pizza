@@ -1,11 +1,14 @@
 package com.mkaanilhan.pizzashop.entity;
 
-public class ApiResponse {
+import java.util.List;
+
+public class PizzaResponse {
+
 
     private String userID;
     private String pizzaID;
 
-    public ApiResponse(String userID, String pizzaID) {
+    public PizzaResponse(String userID, String pizzaID) {
         this.userID = userID;
         this.pizzaID = pizzaID;
     }

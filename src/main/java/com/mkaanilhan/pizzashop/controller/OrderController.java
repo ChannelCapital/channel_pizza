@@ -1,8 +1,7 @@
 package com.mkaanilhan.pizzashop.controller;
 
-import com.mkaanilhan.pizzashop.entity.ApiResponse;
+import com.mkaanilhan.pizzashop.entity.pizzaListResponse;
 import com.mkaanilhan.pizzashop.entity.Order;
-import com.mkaanilhan.pizzashop.entity.User;
 import com.mkaanilhan.pizzashop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,30 +10,33 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/order")
 public class OrderController {
 
     @Autowired
     OrderService orderService;
 
-    @PostMapping("/addorder")
-    public void addOrder(@RequestBody ApiResponse apiResponse) {
+    @PostMapping(value = "/addorder")
+    public  void addOrder(@RequestBody pizzaListResponse pizzaListResponse) {
 
-        orderService.addOrder(apiResponse);
-
-    }
-
-    @GetMapping("ordersbyid/{userID}")
-    public List<Order> getUserOrderById(@PathVariable("userID") String userID){
-
-        return orderService.getUserOrderById(userID);
+        orderService.addOrder(pizzaListResponse);
 
     }
 
-    @GetMapping("/all")
-    public List<Order> getOrders(){
+    //ordersbyid
+    @GetMapping("orderbyid/{userID}")
+    public List<Order> getOrderById(@PathVariable("userID") String userID){
 
-        return orderService.getOrders();
+        return orderService.getOrderById(userID);
+
+    }
+
+    //all
+    @GetMapping("/allorder")
+    public List<Order> getAllOrder(){
+
+        return orderService.getAllOrder();
     }
 
 }

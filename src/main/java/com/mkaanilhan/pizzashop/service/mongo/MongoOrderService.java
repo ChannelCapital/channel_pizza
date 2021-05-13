@@ -1,11 +1,10 @@
 package com.mkaanilhan.pizzashop.service.mongo;
 
 import com.mkaanilhan.pizzashop.dao.OrderRepository;
-import com.mkaanilhan.pizzashop.dao.PizzaRepository;
 import com.mkaanilhan.pizzashop.dao.UserRepository;
-import com.mkaanilhan.pizzashop.entity.ApiResponse;
-import com.mkaanilhan.pizzashop.entity.Order;
 import com.mkaanilhan.pizzashop.entity.Pizza;
+import com.mkaanilhan.pizzashop.entity.pizzaListResponse;
+import com.mkaanilhan.pizzashop.entity.Order;
 import com.mkaanilhan.pizzashop.entity.User;
 import com.mkaanilhan.pizzashop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,38 +22,46 @@ public class MongoOrderService implements OrderService {
     OrderRepository orderRepository;
     @Autowired
     UserRepository userRepository;
-    @Autowired
-    PizzaRepository pizzaRepository;
 
     @Override
-    public void addOrder(ApiResponse apiResponse) {
+    public void addOrder(pizzaListResponse pizzaListResponse) {
 
-        Optional<User> user = userRepository.findById(apiResponse.getUserID());
-        Optional<Pizza> pizza = pizzaRepository.findById(apiResponse.getPizzaID());
+        Optional<User> user = userRepository.findById(pizzaListResponse.getUserID());
 
-        Order order = new Order(user.get().getId(), pizza.get(), new Date());
+        double totalPrice = 0;
+
+        for (Pizza pizza : pizzaListResponse.getPizzaID()){
+
+           totalPrice += pizza.getPrice();
+
+        }
+
+        Order order = new Order(user.get().getId(),
+                pizzaListResponse.getPizzaID(),
+                new Date(),totalPrice);
 
         orderRepository.insert(order);
 
         user.get().getOrders().add(order);
 
-        userRepository.save(user.get());
+        user.get().setBasket(new ArrayList<>());
 
+        userRepository.save(user.get());
 
     }
 
     @Override
-    public List<Order> getUserOrderById(String userID) {
+    public List<Order> getOrderById(String userID) {
 
-        List<Order> orders = orderRepository.findAll();
+        List<Order> getAllOrder = orderRepository.findAll();
 
         List<Order> orderList = new ArrayList<>();
 
-        for (int i = 0; i < orders.size(); i++) {
+        for (int i = 0; i < getAllOrder.size(); i++) {
 
-            if (orders.get(i).getUser().equals(userID)) {
+            if (getAllOrder.get(i).getUserID().equals(userID)) {
 
-                orderList.add(orders.get(i));
+                orderList.add(getAllOrder.get(i));
             }
 
         }
@@ -64,7 +71,7 @@ public class MongoOrderService implements OrderService {
     }
 
     @Override
-    public List<Order> getOrders() {
+    public List<Order> getAllOrder() {
 
         return orderRepository.findAll();
     }

@@ -16,13 +16,16 @@ public class User {
     private String address;
     private List<Order> orders;
     private List<Pizza> favorites;
+    private List<Pizza> basket;
 
-    public User(String email, String password, String address, List<Order> orders, List<Pizza> favorites) {
+
+    public User(String email, String password, String address, List<Order> orders, List<Pizza> favorites, List<Pizza> basket) {
         this.email = email;
         this.password = password;
         this.address = address;
         this.orders = orders;
         this.favorites = favorites;
+        this.basket = basket;
     }
 
     public String getId() {
@@ -71,6 +74,14 @@ public class User {
 
     public void setFavorites(List<Pizza> favorites) {
         this.favorites = favorites;
+    }
+
+    public List<Pizza> getBasket() {
+        return basket;
+    }
+
+    public void setBasket(List<Pizza> basket) {
+        this.basket = basket;
     }
 
     @Override
