@@ -7,6 +7,7 @@ import com.mkaanilhan.pizzashop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -76,13 +77,20 @@ public class MongoUserService implements UserService {
 
         else{
 
+            boolean isThere = false;
+
             for (int i = 0; i <user.get().getFavorites().size();i++){
 
-                if (!user.get().getFavorites().get(i).getId().equals(pizzaResponse.getPizzaID())){
+                if (user.get().getFavorites().get(i).getId().equals(pizzaResponse.getPizzaID())){
 
-                    user.get().getFavorites().add(pizza.get());
-
+                    isThere = true;
                 }
+
+            }
+
+            if (!isThere){
+
+                user.get().getFavorites().add(pizza.get());
 
             }
 
