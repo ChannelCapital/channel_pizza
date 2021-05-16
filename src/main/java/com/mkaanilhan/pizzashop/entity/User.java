@@ -19,6 +19,22 @@ public class User {
     private List<Pizza> basket;
 
 
+    public User(){
+
+        super();
+
+    }
+
+    public User(String id, String email, String password, String address, List<Order> orders, List<Pizza> favorites, List<Pizza> basket) {
+       this.id = id;
+        this.email = email;
+        this.password = password;
+        this.address = address;
+        this.orders = orders;
+        this.favorites = favorites;
+        this.basket = basket;
+    }
+
     public User(String email, String password, String address, List<Order> orders, List<Pizza> favorites, List<Pizza> basket) {
         this.email = email;
         this.password = password;

@@ -17,7 +17,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    //login
     @PostMapping("/signin")
     public User signIn(@RequestBody UserLogin login) {
 
@@ -25,7 +24,6 @@ public class UserController {
 
     }
 
-    //all
     @GetMapping("/alluser")
     public List<User> getAllUser() {
 
@@ -33,7 +31,6 @@ public class UserController {
 
     }
 
-    //add
     @PostMapping("/adduser")
     public void addUser(@RequestBody User user) {
 
@@ -45,7 +42,6 @@ public class UserController {
 
     }
 
-    //adduserfavorites
     @PostMapping("/addfavorite")
     public void addFavorite(@RequestBody PizzaResponse pizzaResponse) {
 
@@ -53,7 +49,6 @@ public class UserController {
 
     }
 
-    //getfavoritesbyuser
     @GetMapping("/getfavoritebyuser/{userID}")
     public List<Pizza> getFavoriteByUser(@PathVariable String userID) {
 
@@ -61,7 +56,6 @@ public class UserController {
 
     }
 
-    //addbasketfavorites
     @PostMapping("/addbasket")
     public void addBasket(@RequestBody PizzaResponse pizzaResponse) {
 
@@ -76,7 +70,6 @@ public class UserController {
 
     }
 
-    //update
     @PostMapping("/updateuser")
     public void updateUser(@RequestBody User user) {
 
@@ -84,7 +77,6 @@ public class UserController {
 
     }
 
-    //removeitem
     @PostMapping("/removebasketitem")
     public void removeBasketItem(@RequestBody PizzaResponse pizzaResponse){
 
@@ -92,7 +84,6 @@ public class UserController {
 
     }
 
-    //removefromfav
     @PostMapping("/removefavoriteitem")
     public void removeFavoriteItem(@RequestBody PizzaResponse pizzaResponse){
 

@@ -3,7 +3,7 @@ package com.mkaanilhan.pizzashop.service.mongo;
 import com.mkaanilhan.pizzashop.dao.OrderRepository;
 import com.mkaanilhan.pizzashop.dao.UserRepository;
 import com.mkaanilhan.pizzashop.entity.Pizza;
-import com.mkaanilhan.pizzashop.entity.pizzaListResponse;
+import com.mkaanilhan.pizzashop.entity.PizzaListResponse;
 import com.mkaanilhan.pizzashop.entity.Order;
 import com.mkaanilhan.pizzashop.entity.User;
 import com.mkaanilhan.pizzashop.service.OrderService;
@@ -15,6 +15,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author Murat Kaan Ilhan
+ * @since 15.05.2021
+ */
+
 @Service
 public class MongoOrderService implements OrderService {
 
@@ -23,8 +28,18 @@ public class MongoOrderService implements OrderService {
     @Autowired
     UserRepository userRepository;
 
+    public MongoOrderService(OrderRepository orderRepository, UserRepository userRepository) {
+        this.orderRepository = orderRepository;
+        this.userRepository = userRepository;
+    }
+
+    /**
+     *This method is used for adding new order to the db for specific user.
+     * @param pizzaListResponse is json object which has userID and pizzaID.
+     */
+
     @Override
-    public void addOrder(pizzaListResponse pizzaListResponse) {
+    public void addOrder(PizzaListResponse pizzaListResponse) {
 
         Optional<User> user = userRepository.findById(pizzaListResponse.getUserID());
 
@@ -50,6 +65,12 @@ public class MongoOrderService implements OrderService {
 
     }
 
+    /**
+     *This method is used for to get all placed orders for specific user.
+     * @param userID is used for finding user from databases.
+     * @return order list for given userID.
+     */
+
     @Override
     public List<Order> getOrderById(String userID) {
 
@@ -69,6 +90,11 @@ public class MongoOrderService implements OrderService {
         return orderList;
 
     }
+
+    /**
+     * This method is used to get all order from databases.
+     * @return get all orders from databases.
+     */
 
     @Override
     public List<Order> getAllOrder() {

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.mkaanilhan.pizzashop"},{"l":"com.mkaanilhan.pizzashop.controller"},{"l":"com.mkaanilhan.pizzashop.dao"},{"l":"com.mkaanilhan.pizzashop.entity"},{"l":"com.mkaanilhan.pizzashop.service"},{"l":"com.mkaanilhan.pizzashop.service.mongo"}]

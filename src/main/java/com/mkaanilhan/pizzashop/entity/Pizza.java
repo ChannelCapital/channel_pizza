@@ -13,6 +13,20 @@ public class Pizza {
     private double price;
     private String description;
 
+    public Pizza(){
+
+        super();
+
+    }
+
+    public Pizza(String id,String img, String name, double price, String description) {
+        this.id = id;
+        this.img = img;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+    }
+
 
     public Pizza(String img, String name, double price, String description) {
         this.img = img;

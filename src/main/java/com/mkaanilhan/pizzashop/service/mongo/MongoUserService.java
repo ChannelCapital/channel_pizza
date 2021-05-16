@@ -10,6 +10,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+
+/**
+ * @author Murat Kaan Ihan
+ * @since 15.05.2021
+ */
+
 @Service
 public class MongoUserService implements UserService {
 
@@ -18,8 +24,14 @@ public class MongoUserService implements UserService {
     @Autowired
     PizzaRepository pizzaRepository;
 
-    /*
-     *It enables to getting all user from DB
+    public MongoUserService(UserRepository userRepository, PizzaRepository pizzaRepository) {
+        this.userRepository = userRepository;
+        this.pizzaRepository = pizzaRepository;
+    }
+
+    /**
+     * It enables to getting all user from DB
+     * @return List of Users from DB as List type.
      */
 
     @Override
@@ -29,8 +41,9 @@ public class MongoUserService implements UserService {
 
     }
 
-    /*
-     *It enables to add a user to DB
+    /**
+     * It enables to add a user to DB
+     * @param user type is used to insert item to the DB
      */
 
     @Override
@@ -42,6 +55,11 @@ public class MongoUserService implements UserService {
 
     /*
      *It enables to add a favorite pizza for a specific user. Not allowed same pizza.
+     */
+
+    /**
+     * It enables to add a favorite pizza for a specific user. Not allowed same pizza.
+     * @param pizzaResponse has UsedID and pizzaID. those used for getting User and Pizza type
      */
 
     @Override
@@ -74,8 +92,11 @@ public class MongoUserService implements UserService {
 
     }
 
-    /*
-     *It enables to get all favorites pizza a specific user
+
+    /**
+     *  It enables to get all favorites pizza a specific user.
+     * @param userID is used to get User from DB
+     * @return List of Pizza item. List type
      */
 
     @Override
@@ -97,8 +118,10 @@ public class MongoUserService implements UserService {
         return pizzaList;
     }
 
-    /*
-     *Login Features. Check both email and password attribute.
+    /**
+     * Login Features. Check both email and password attribute.
+     * @param login has userMail and userPass attributes to get User validation.
+     * @return User type to get all user information.
      */
 
     @Override
@@ -121,8 +144,10 @@ public class MongoUserService implements UserService {
 
     }
 
-    /*
-     *It enables to get basket items for a specific user using userID
+    /**
+     * It enables to get basket items for a specific user using userID.
+     * @param userID is used for finding user from databases.
+     * @return List type list of pizza for specific user.
      */
 
     @Override
@@ -145,8 +170,9 @@ public class MongoUserService implements UserService {
 
     }
 
-    /*
-     *It enables to add pizza to the basket
+    /**
+     * It enables to add pizza to the basket
+     * @param pizzaResponse has UsedID and pizzaID. those used for getting User and Pizza type
      */
 
     @Override
@@ -161,8 +187,9 @@ public class MongoUserService implements UserService {
 
     }
 
-    /*
-     *It enables to update user credentials.
+    /**
+     * It enables to update user credentials.
+     * @param user is to get user info for updating issue.
      */
 
     @Override
@@ -178,8 +205,9 @@ public class MongoUserService implements UserService {
 
     }
 
-    /*
-     *It enables to remove basket item for a specific user.
+    /**
+     * It enables to remove basket item for a specific user.
+     * @param pizzaResponse has two attibutes userID and pizzaID to get user and pizza informations.
      */
 
     @Override
@@ -202,8 +230,9 @@ public class MongoUserService implements UserService {
 
     }
 
-    /*
-     *It enables to remove favorite item for a specific user.
+    /**
+     * It enables to remove favorite item for a specific user.
+     * @param pizzaResponse has two attibutes userID and pizzaID to get user and pizza informations.
      */
 
     @Override

@@ -16,6 +16,20 @@ public class Order {
     private Date date;
     private double orderTotal;
 
+    public Order(){
+
+        super();
+
+    }
+
+    public Order(String id,String userID, List<Pizza> pizzaID, Date date, double orderTotal) {
+        this.id = id;
+        this.userID = userID;
+        this.pizzaID = pizzaID;
+        this.date = date;
+        this.orderTotal = orderTotal;
+    }
+
     public Order(String userID, List<Pizza> pizzaID, Date date, double orderTotal) {
         this.userID = userID;
         this.pizzaID = pizzaID;

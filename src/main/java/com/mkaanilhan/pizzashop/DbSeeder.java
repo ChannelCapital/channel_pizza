@@ -63,9 +63,15 @@ public class DbSeeder implements CommandLineRunner {
         this.pizzaRepository.deleteAll();
         this.orderRepository.deleteAll();
 
+        User user1 = new User("kaan@mail.com", "123", "Kozyatagi",new ArrayList<>(
+        ), new ArrayList<>(), new ArrayList<>());
+
         List<Pizza> pizzas = Arrays.asList(pizza1,pizza2,pizza3,pizza4,pizza5, pizza6);
 
+        List<User> users = Arrays.asList(user1);
+
         this.pizzaRepository.saveAll(pizzas);
+        this.userRepository.saveAll(users);
 
     }
 }

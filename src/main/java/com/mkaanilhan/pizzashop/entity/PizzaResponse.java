@@ -8,6 +8,12 @@ public class PizzaResponse {
     private String userID;
     private String pizzaID;
 
+    public PizzaResponse(){
+
+        super();
+
+    }
+
     public PizzaResponse(String userID, String pizzaID) {
         this.userID = userID;
         this.pizzaID = pizzaID;

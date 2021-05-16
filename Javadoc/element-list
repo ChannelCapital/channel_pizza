@@ -1,0 +1,6 @@
+com.mkaanilhan.pizzashop
+com.mkaanilhan.pizzashop.controller
+com.mkaanilhan.pizzashop.dao
+com.mkaanilhan.pizzashop.entity
+com.mkaanilhan.pizzashop.service
+com.mkaanilhan.pizzashop.service.mongo

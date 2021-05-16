@@ -18,7 +18,6 @@ public class PizzaController {
     @Autowired
     PizzaService pizzaService;
 
-    //all
     @GetMapping("/allpizza")
     public List<Pizza> getAllPizza() {
 

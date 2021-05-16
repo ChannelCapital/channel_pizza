@@ -1,13 +1,12 @@
 package com.mkaanilhan.pizzashop.controller;
 
-import com.mkaanilhan.pizzashop.entity.pizzaListResponse;
+import com.mkaanilhan.pizzashop.entity.PizzaListResponse;
 import com.mkaanilhan.pizzashop.entity.Order;
 import com.mkaanilhan.pizzashop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 
 @RestController
 @CrossOrigin
@@ -18,13 +17,12 @@ public class OrderController {
     OrderService orderService;
 
     @PostMapping(value = "/addorder")
-    public  void addOrder(@RequestBody pizzaListResponse pizzaListResponse) {
+    public  void addOrder(@RequestBody PizzaListResponse pizzaListResponse) {
 
         orderService.addOrder(pizzaListResponse);
 
     }
 
-    //ordersbyid
     @GetMapping("orderbyid/{userID}")
     public List<Order> getOrderById(@PathVariable("userID") String userID){
 
@@ -32,7 +30,6 @@ public class OrderController {
 
     }
 
-    //all
     @GetMapping("/allorder")
     public List<Order> getAllOrder(){
 
