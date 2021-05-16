@@ -80,6 +80,13 @@ export default {
   },
 
   methods: {
+
+    /**
+      *This method is used to give order from existing product inside the basket
+      *@param {userID} user identificator
+      */
+
+
     async GiveOrder(userID) {
       var orderList = [];
 
@@ -98,6 +105,12 @@ export default {
 
         this.$router.push("/order");
     },
+
+    /**
+      *This method is used to remove item from User Basket
+      *@param {pizzaID} pizza item identificator
+      *@param {pizzaPrice} price of pizza
+      */
 
     async removeItem(pizzaID, pizzaPrice) {
       var obj = {

@@ -61,7 +61,13 @@ export default {
     };
   },
 
+
+
   methods: {
+
+      /**
+        *This method enables to save user credentials to the db
+        */
     async submitted() {
       if (this.password != this.cPassword) {
         this.isMatch = false;

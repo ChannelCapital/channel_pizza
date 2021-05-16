@@ -95,6 +95,13 @@ export default {
     }
   },
   methods: {
+
+    /**
+     * this method update user informations
+     * 
+     * 
+     */
+
     async update() {
       if (this.password != this.rePassword) {
         this.isMatch = false;
@@ -118,6 +125,12 @@ export default {
 
 
     },
+
+    /**
+     * 
+     * this method fetch postcode data from remote api for showing codes to the users.
+     * 
+     */
 
     async getCode() {
       if (this.zipCode != null && this.zipCode != "") {

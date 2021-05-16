@@ -59,6 +59,12 @@ export default {
   },
 
   methods: {
+
+    /**
+     * this method is used to add pizza item to the user favorites
+     * @param {pizzaID} indicator of pizza
+     */
+
     async AddFavorites(pizzaID) {
       await axios.post("user/addfavorite", {
         userID: this.id,
@@ -82,6 +88,11 @@ export default {
         appendToast: append,
       });
     },
+
+        /**
+     * this method is used to add pizza item to the user baskets
+     * @param {pizzaID} indicator of pizza
+     */
 
     async AddBasket(pizzaID) {
       await axios.post("user/addbasket", {

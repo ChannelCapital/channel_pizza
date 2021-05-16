@@ -71,6 +71,11 @@ export default {
   },
 
   methods: {
+
+    /**
+     * This method is used to add pizza item to the basket.
+     * @param {pizzaID} id of pizza which is put to the basket.
+     */
     async AddBasket(pizzaID) {
       await axios.post("user/addbasket", {
         userID: this.id,
@@ -87,6 +92,11 @@ export default {
         appendToast: append,
       });
     },
+
+        /**
+     * This method is used to remove pizza item to the basket.
+     * @param {pizzaID} id of pizza which is removed to the basket.
+     */
 
     async removeItem(pizzaID) {
       await axios.post("user/removefavoriteitem", {

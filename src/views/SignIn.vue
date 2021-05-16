@@ -51,6 +51,10 @@ export default {
   },
 
   methods: {
+
+    /**
+      *This method enables to work login properties given user credentials.
+      */
     async submitted() {
       const res = await axios.post("user/signin", {
         email: this.email,
