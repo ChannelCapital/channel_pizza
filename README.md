@@ -10,7 +10,9 @@
 
 * We expect the code is production ready so that the code should include **JavaDoc**, **JSDoc**, *Unit Testing* and *Integration Testing* with **JUnit** and **mockito** also **Vue.js** unit testing.
 
-* In order to the application work on any environment it should be containerized, to accomplish that the projects should include **Dockerfile** for each service.
+* Building tools like **Maven** or **Gradle** is required, we suggest you to use *Gradle*.
+
+* In order to the application work on any environment it should be containerized, to accomplish that the projects should include **Dockerfile** for each service and application needs to run on a *Docker* container.
 
 * The code should include **Git** version control system so that other members of the team review and use the code.
 
