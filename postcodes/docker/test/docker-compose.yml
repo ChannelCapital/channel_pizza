@@ -1,0 +1,28 @@
+---
+version: "3"
+services:
+  pg:
+    image: mdillon/postgis:10
+    environment:
+      POSTGRES_DB: postcodeio_testing
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST: pg
+      POSTGRES_USER: postcodesio
+    ports:
+      - 5432:5432
+  api:
+    build:
+      context: ../../
+      dockerfile: ./docker/test/Dockerfile
+    environment:
+      POSTGRES_HOST: pg
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postcodesio
+      POSTGRES_DATABASE: postcodeio_testing
+    depends_on:
+      - pg
+    volumes:
+      - "../../:/app/"
+    ports:
+      - 8000:8000
+    command: tail

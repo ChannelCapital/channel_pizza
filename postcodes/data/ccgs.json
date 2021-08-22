@@ -1,0 +1,614 @@
+{
+  "E38000006": {
+    "ccg19cdh": "02P",
+    "name": "NHS Barnsley"
+  },
+  "E38000007": {
+    "ccg19cdh": "99E",
+    "name": "NHS Basildon and Brentwood"
+  },
+  "E38000008": {
+    "ccg19cdh": "02Q",
+    "name": "NHS Bassetlaw"
+  },
+  "E38000014": {
+    "ccg19cdh": "00Q",
+    "name": "NHS Blackburn with Darwen"
+  },
+  "E38000015": {
+    "ccg19cdh": "00R",
+    "name": "NHS Blackpool"
+  },
+  "E38000016": {
+    "ccg19cdh": "00T",
+    "name": "NHS Bolton"
+  },
+  "E38000021": {
+    "ccg19cdh": "09D",
+    "name": "NHS Brighton and Hove"
+  },
+  "E38000024": {
+    "ccg19cdh": "00V",
+    "name": "NHS Bury"
+  },
+  "E38000025": {
+    "ccg19cdh": "02T",
+    "name": "NHS Calderdale"
+  },
+  "E38000026": {
+    "ccg19cdh": "06H",
+    "name": "NHS Cambridgeshire and Peterborough"
+  },
+  "E38000028": {
+    "ccg19cdh": "04Y",
+    "name": "NHS Cannock Chase"
+  },
+  "E38000030": {
+    "ccg19cdh": "99F",
+    "name": "NHS Castle Point and Rochford"
+  },
+  "E38000034": {
+    "ccg19cdh": "00X",
+    "name": "NHS Chorley and South Ribble"
+  },
+  "E38000044": {
+    "ccg19cdh": "02X",
+    "name": "NHS Doncaster"
+  },
+  "E38000045": {
+    "ccg19cdh": "11J",
+    "name": "NHS Dorset"
+  },
+  "E38000049": {
+    "ccg19cdh": "06K",
+    "name": "NHS East and North Hertfordshire"
+  },
+  "E38000050": {
+    "ccg19cdh": "01A",
+    "name": "NHS East Lancashire"
+  },
+  "E38000051": {
+    "ccg19cdh": "03W",
+    "name": "NHS East Leicestershire and Rutland"
+  },
+  "E38000052": {
+    "ccg19cdh": "02Y",
+    "name": "NHS East Riding of Yorkshire"
+  },
+  "E38000053": {
+    "ccg19cdh": "05D",
+    "name": "NHS East Staffordshire"
+  },
+  "E38000062": {
+    "ccg19cdh": "11M",
+    "name": "NHS Gloucestershire"
+  },
+  "E38000068": {
+    "ccg19cdh": "01F",
+    "name": "NHS Halton"
+  },
+  "E38000079": {
+    "ccg19cdh": "06N",
+    "name": "NHS Herts Valleys"
+  },
+  "E38000080": {
+    "ccg19cdh": "01D",
+    "name": "NHS Heywood, Middleton and Rochdale"
+  },
+  "E38000085": {
+    "ccg19cdh": "03F",
+    "name": "NHS Hull"
+  },
+  "E38000086": {
+    "ccg19cdh": "06L",
+    "name": "NHS Ipswich and East Suffolk"
+  },
+  "E38000089": {
+    "ccg19cdh": "11N",
+    "name": "NHS Kernow"
+  },
+  "E38000091": {
+    "ccg19cdh": "01J",
+    "name": "NHS Knowsley"
+  },
+  "E38000097": {
+    "ccg19cdh": "04C",
+    "name": "NHS Leicester City"
+  },
+  "E38000101": {
+    "ccg19cdh": "99A",
+    "name": "NHS Liverpool"
+  },
+  "E38000106": {
+    "ccg19cdh": "06Q",
+    "name": "NHS Mid Essex"
+  },
+  "E38000117": {
+    "ccg19cdh": "06T",
+    "name": "NHS North East Essex"
+  },
+  "E38000119": {
+    "ccg19cdh": "03H",
+    "name": "NHS North East Lincolnshire"
+  },
+  "E38000122": {
+    "ccg19cdh": "03K",
+    "name": "NHS North Lincolnshire"
+  },
+  "E38000126": {
+    "ccg19cdh": "05G",
+    "name": "NHS North Staffordshire"
+  },
+  "E38000127": {
+    "ccg19cdh": "99C",
+    "name": "NHS North Tyneside"
+  },
+  "E38000130": {
+    "ccg19cdh": "00L",
+    "name": "NHS Northumberland"
+  },
+  "E38000135": {
+    "ccg19cdh": "00Y",
+    "name": "NHS Oldham"
+  },
+  "E38000136": {
+    "ccg19cdh": "10Q",
+    "name": "NHS Oxfordshire"
+  },
+  "E38000137": {
+    "ccg19cdh": "10R",
+    "name": "NHS Portsmouth"
+  },
+  "E38000141": {
+    "ccg19cdh": "03L",
+    "name": "NHS Rotherham"
+  },
+  "E38000143": {
+    "ccg19cdh": "01G",
+    "name": "NHS Salford"
+  },
+  "E38000146": {
+    "ccg19cdh": "03N",
+    "name": "NHS Sheffield"
+  },
+  "E38000150": {
+    "ccg19cdh": "11X",
+    "name": "NHS Somerset"
+  },
+  "E38000153": {
+    "ccg19cdh": "05Q",
+    "name": "NHS South East Staffordshire and Seisdon Peninsula"
+  },
+  "E38000161": {
+    "ccg19cdh": "01T",
+    "name": "NHS South Sefton"
+  },
+  "E38000163": {
+    "ccg19cdh": "00N",
+    "name": "NHS South Tyneside"
+  },
+  "E38000168": {
+    "ccg19cdh": "99G",
+    "name": "NHS Southend"
+  },
+  "E38000170": {
+    "ccg19cdh": "01V",
+    "name": "NHS Southport and Formby"
+  },
+  "E38000172": {
+    "ccg19cdh": "01X",
+    "name": "NHS St Helens"
+  },
+  "E38000173": {
+    "ccg19cdh": "05V",
+    "name": "NHS Stafford and Surrounds"
+  },
+  "E38000174": {
+    "ccg19cdh": "01W",
+    "name": "NHS Stockport"
+  },
+  "E38000175": {
+    "ccg19cdh": "05W",
+    "name": "NHS Stoke on Trent"
+  },
+  "E38000176": {
+    "ccg19cdh": "00P",
+    "name": "NHS Sunderland"
+  },
+  "E38000182": {
+    "ccg19cdh": "01Y",
+    "name": "NHS Tameside and Glossop"
+  },
+  "E38000185": {
+    "ccg19cdh": "07G",
+    "name": "NHS Thurrock"
+  },
+  "E38000187": {
+    "ccg19cdh": "02A",
+    "name": "NHS Trafford"
+  },
+  "E38000188": {
+    "ccg19cdh": "03Q",
+    "name": "NHS Vale of York"
+  },
+  "E38000190": {
+    "ccg19cdh": "03R",
+    "name": "NHS Wakefield"
+  },
+  "E38000194": {
+    "ccg19cdh": "02E",
+    "name": "NHS Warrington"
+  },
+  "E38000197": {
+    "ccg19cdh": "07H",
+    "name": "NHS West Essex"
+  },
+  "E38000200": {
+    "ccg19cdh": "02G",
+    "name": "NHS West Lancashire"
+  },
+  "E38000201": {
+    "ccg19cdh": "04V",
+    "name": "NHS West Leicestershire"
+  },
+  "E38000204": {
+    "ccg19cdh": "07K",
+    "name": "NHS West Suffolk"
+  },
+  "E38000205": {
+    "ccg19cdh": "02H",
+    "name": "NHS Wigan Borough"
+  },
+  "E38000208": {
+    "ccg19cdh": "12F",
+    "name": "NHS Wirral"
+  },
+  "E38000212": {
+    "ccg19cdh": "13T",
+    "name": "NHS Newcastle Gateshead"
+  },
+  "E38000215": {
+    "ccg19cdh": "01H",
+    "name": "NHS North Cumbria"
+  },
+  "E38000217": {
+    "ccg19cdh": "14L",
+    "name": "NHS Manchester"
+  },
+  "E38000220": {
+    "ccg19cdh": "15E",
+    "name": "NHS Birmingham and Solihull"
+  },
+  "E38000221": {
+    "ccg19cdh": "15A",
+    "name": "NHS Berkshire West"
+  },
+  "E38000222": {
+    "ccg19cdh": "15C",
+    "name": "NHS Bristol, North Somerset and South Gloucestershire"
+  },
+  "E38000223": {
+    "ccg19cdh": "14Y",
+    "name": "NHS Buckinghamshire"
+  },
+  "E38000225": {
+    "ccg19cdh": "15F",
+    "name": "NHS Leeds"
+  },
+  "E38000226": {
+    "ccg19cdh": "02M",
+    "name": "NHS Fylde and Wyre"
+  },
+  "E38000227": {
+    "ccg19cdh": "01E",
+    "name": "NHS Greater Preston"
+  },
+  "E38000228": {
+    "ccg19cdh": "01K",
+    "name": "NHS Morecambe Bay"
+  },
+  "E38000229": {
+    "ccg19cdh": "15M",
+    "name": "NHS Derby and Derbyshire"
+  },
+  "E38000230": {
+    "ccg19cdh": "15N",
+    "name": "NHS Devon"
+  },
+  "E38000231": {
+    "ccg19cdh": "92G",
+    "name": "NHS Bath and North East Somerset, Swindon and Wiltshire"
+  },
+  "E38000232": {
+    "ccg19cdh": "36J",
+    "name": "NHS Bradford District and Craven"
+  },
+  "E38000233": {
+    "ccg19cdh": "27D",
+    "name": "NHS Cheshire"
+  },
+  "E38000234": {
+    "ccg19cdh": "84H",
+    "name": "NHS County Durham"
+  },
+  "E38000235": {
+    "ccg19cdh": "97R",
+    "name": "NHS East Sussex"
+  },
+  "E38000236": {
+    "ccg19cdh": "18C",
+    "name": "NHS Herefordshire and Worcestershire"
+  },
+  "E38000237": {
+    "ccg19cdh": "91Q",
+    "name": "NHS Kent and Medway"
+  },
+  "E38000238": {
+    "ccg19cdh": "71E",
+    "name": "NHS Lincolnshire"
+  },
+  "E38000239": {
+    "ccg19cdh": "26A",
+    "name": "NHS Norfolk and Waveney"
+  },
+  "E38000240": {
+    "ccg19cdh": "93C",
+    "name": "NHS North Central London"
+  },
+  "E38000241": {
+    "ccg19cdh": "42D",
+    "name": "NHS North Yorkshire"
+  },
+  "E38000242": {
+    "ccg19cdh": "78H",
+    "name": "NHS Northamptonshire"
+  },
+  "E38000243": {
+    "ccg19cdh": "52R",
+    "name": "NHS Nottingham and Nottinghamshire"
+  },
+  "E38000244": {
+    "ccg19cdh": "72Q",
+    "name": "NHS South East London"
+  },
+  "E38000245": {
+    "ccg19cdh": "36L",
+    "name": "NHS South West London"
+  },
+  "E38000246": {
+    "ccg19cdh": "92A",
+    "name": "NHS Surrey Heartlands"
+  },
+  "E38000247": {
+    "ccg19cdh": "16C",
+    "name": "NHS Tees Valley"
+  },
+  "E38000248": {
+    "ccg19cdh": "70F",
+    "name": "NHS West Sussex"
+  },
+  "E38000249": {
+    "ccg19cdh": "M1J4Y",
+    "name": "NHS Bedfordshire, Luton and Milton Keynes"
+  },
+  "E38000250": {
+    "ccg19cdh": "D2P2L",
+    "name": "NHS Black Country and West Birmingham"
+  },
+  "E38000251": {
+    "ccg19cdh": "B2M3M",
+    "name": "NHS Coventry and Warwickshire"
+  },
+  "E38000252": {
+    "ccg19cdh": "D4U1Y",
+    "name": "NHS Frimley"
+  },
+  "E38000253": {
+    "ccg19cdh": "D9Y0V",
+    "name": "NHS Hampshire, Southampton and Isle of Wight"
+  },
+  "E38000254": {
+    "ccg19cdh": "X2C4Y",
+    "name": "NHS Kirklees"
+  },
+  "E38000255": {
+    "ccg19cdh": "A3A8R",
+    "name": "NHS North East London"
+  },
+  "E38000256": {
+    "ccg19cdh": "W2U3Z",
+    "name": "NHS North West London"
+  },
+  "E38000257": {
+    "ccg19cdh": "M2L0M",
+    "name": "NHS Shropshire, Telford and Wrekin"
+  },
+  "M01000001": {
+    "ccg19cdh": "YK1",
+    "name": "Isle of Man"
+  },
+  "S03000001": {
+    "ccg19cdh": "001",
+    "name": "East Ayrshire Community Health Partnership"
+  },
+  "S03000002": {
+    "ccg19cdh": "002",
+    "name": "North Ayrshire Community Health Partnership"
+  },
+  "S03000003": {
+    "ccg19cdh": "003",
+    "name": "South Ayrshire Community Health Partnership"
+  },
+  "S03000004": {
+    "ccg19cdh": "004",
+    "name": "Scottish Borders Community Health and Care Partnership"
+  },
+  "S03000005": {
+    "ccg19cdh": "005",
+    "name": "Dumfries and Galloway Community Health Partnership"
+  },
+  "S03000006": {
+    "ccg19cdh": "006",
+    "name": "Dunfermline and West Fife Community Health Partnership"
+  },
+  "S03000007": {
+    "ccg19cdh": "007",
+    "name": "Glenrothes and North East Fife Community Health Partnership"
+  },
+  "S03000008": {
+    "ccg19cdh": "008",
+    "name": "Kirkcaldy and Levenmouth Community Health Partnership"
+  },
+  "S03000009": {
+    "ccg19cdh": "009",
+    "name": "Clackmannanshire Community Health Partnership"
+  },
+  "S03000010": {
+    "ccg19cdh": "010",
+    "name": "Falkirk Community Health Partnership"
+  },
+  "S03000011": {
+    "ccg19cdh": "011",
+    "name": "Stirling Community Health Partnership"
+  },
+  "S03000012": {
+    "ccg19cdh": "012",
+    "name": "Aberdeen City Community Health Partnership"
+  },
+  "S03000013": {
+    "ccg19cdh": "013",
+    "name": "Aberdeenshire Community Health Partnership"
+  },
+  "S03000014": {
+    "ccg19cdh": "014",
+    "name": "Moray Community Health and Social Care Partnership"
+  },
+  "S03000015": {
+    "ccg19cdh": "015",
+    "name": "East Dunbartonshire Community Health Partnership"
+  },
+  "S03000017": {
+    "ccg19cdh": "017",
+    "name": "East Renfrewshire Community Health and Care Partnership"
+  },
+  "S03000018": {
+    "ccg19cdh": "018",
+    "name": "Inverclyde Community Health and Care Partnership"
+  },
+  "S03000020": {
+    "ccg19cdh": "020",
+    "name": "Renfrewshire Community Health Partnership"
+  },
+  "S03000023": {
+    "ccg19cdh": "023",
+    "name": "West Dunbartonshire Community Health and Care Partnership"
+  },
+  "S03000025": {
+    "ccg19cdh": "025",
+    "name": "Argyll and Bute Community Health Partnership"
+  },
+  "S03000029": {
+    "ccg19cdh": "029",
+    "name": "North Lanarkshire Community Health Partnership"
+  },
+  "S03000030": {
+    "ccg19cdh": "030",
+    "name": "South Lanarkshire Community Health Partnership"
+  },
+  "S03000031": {
+    "ccg19cdh": "031",
+    "name": "East Lothian Community Health Partnership"
+  },
+  "S03000032": {
+    "ccg19cdh": "032",
+    "name": "Midlothian Community Health Partnership"
+  },
+  "S03000035": {
+    "ccg19cdh": "035",
+    "name": "West Lothian Community Health and Care Partnership"
+  },
+  "S03000036": {
+    "ccg19cdh": "036",
+    "name": "Orkney Community Health Partnership"
+  },
+  "S03000037": {
+    "ccg19cdh": "037",
+    "name": "Shetland Community Health Partnership"
+  },
+  "S03000038": {
+    "ccg19cdh": "038",
+    "name": "Angus Community Health Partnership"
+  },
+  "S03000039": {
+    "ccg19cdh": "039",
+    "name": "Dundee Community Health Partnership"
+  },
+  "S03000040": {
+    "ccg19cdh": "040",
+    "name": "Perth and Kinross Community Health Partnership"
+  },
+  "S03000041": {
+    "ccg19cdh": "041",
+    "name": "Western Isles Community Health and Social Care Partnership"
+  },
+  "S03000042": {
+    "ccg19cdh": "042",
+    "name": "Edinburgh Community Health Partnership"
+  },
+  "S03000043": {
+    "ccg19cdh": "043",
+    "name": "Glasgow City Community Health Partnership"
+  },
+  "S03000044": {
+    "ccg19cdh": "044",
+    "name": "Highland Health and Social Care Partnership"
+  },
+  "W11000023": {
+    "ccg19cdh": "7A1",
+    "name": "Betsi Cadwaladr University Health Board"
+  },
+  "W11000024": {
+    "ccg19cdh": "7A7",
+    "name": "Powys Teaching Health Board"
+  },
+  "W11000025": {
+    "ccg19cdh": "7A2",
+    "name": "Hywel Dda University Health Board"
+  },
+  "W11000028": {
+    "ccg19cdh": "7A6",
+    "name": "Aneurin Bevan University Health Board"
+  },
+  "W11000029": {
+    "ccg19cdh": "7A4",
+    "name": "Cardiff and Vale University Health Board"
+  },
+  "W11000030": {
+    "ccg19cdh": "7A5",
+    "name": "Cwm Taf Morgannwg University Health Board"
+  },
+  "W11000031": {
+    "ccg19cdh": "7A3",
+    "name": "Swansea Bay University Health Board"
+  },
+  "ZC010": {
+    "ccg19cdh": "ZC010",
+    "name": "Belfast"
+  },
+  "ZC020": {
+    "ccg19cdh": "ZC020",
+    "name": "Northern"
+  },
+  "ZC030": {
+    "ccg19cdh": "ZC030",
+    "name": "Southern"
+  },
+  "ZC040": {
+    "ccg19cdh": "ZC040",
+    "name": "South Eastern"
+  },
+  "ZC050": {
+    "ccg19cdh": "ZC050",
+    "name": "Western"
+  }
+}
