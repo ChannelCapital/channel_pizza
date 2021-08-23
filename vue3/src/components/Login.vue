@@ -26,6 +26,13 @@
             ></span>
             <span>Login</span>
           </button>
+          <button @click="$router.push('register')" class="btn btn-secondary btn-block" :disabled="loading">
+            <span
+              v-show="loading"
+              class="spinner-border spinner-border-sm"
+            ></span>
+            <span>Register</span>
+          </button>
         </div>
 
         <div class="form-group">
@@ -68,7 +75,7 @@ export default {
   },
   created() {
     if (this.loggedIn) {
-      this.$router.push("/profile");
+      this.$router.push("/home");
     }
   },
   methods: {
@@ -77,7 +84,7 @@ export default {
 
       this.$store.dispatch("auth/login", user).then(
         () => {
-          this.$router.push("/profile");
+          this.$router.push("/home");
         },
         (error) => {
           this.loading = false;

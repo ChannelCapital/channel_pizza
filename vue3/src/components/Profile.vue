@@ -7,7 +7,7 @@
     </header>
     <p>
       <strong>Token:</strong>
-      {{currentUser.accessToken.substring(0, 20)}} ... {{currentUser.accessToken.substr(currentUser.accessToken.length - 20)}}
+      {{currentUser.accessToken.substring(0, 174)}} 
     </p>
     <p>
       <strong>Id:</strong>
@@ -39,3 +39,9 @@ export default {
   }
 };
 </script>
+<style scoped>
+p {
+  width: 50%;
+  overflow-wrap: anywhere;
+}
+</style>

@@ -13,21 +13,23 @@
           </button>
         </div> -->
       </div>
-      <div class="cart" v-show="showCart">
-        <div v-show="items.length > 0">
-          <table>
-            <tr v-for="item in items" v-bind:key="item" transition="fade">
-              <td>{{ item.quantity }}x</td><td>{{ item.pizzaName }}</td><td>${{ item.pizzaPrice * item.quantity }} <button @click="removeFromCart(item)">X</button></td>
-            </tr>
-          </table>
-          <div>
-            <button @click="(verified = true), (showCart = false)" class="checkout-btn">
-              Check out
-            </button>
+      <div v-show="loggedIn === true">
+        <div class="cart" v-show="showCart">
+          <div v-show="items.length > 0">
+            <table>
+              <tr v-for="item in items" v-bind:key="item" transition="fade">
+                <td>{{ item.quantity }}x</td><td>{{ item.pizzaName }}</td><td>${{ item.pizzaPrice * item.quantity }} <button @click="removeFromCart(item)">X</button></td>
+              </tr>
+            </table>
+            <div>
+              <button @click="(verified = true), (showCart = false)" class="checkout-btn">
+                Check out
+              </button>
+            </div>
           </div>
-        </div>
-        <div v-show="items.length === 0">
-          <p style="width:250px; text-align:left">Your cart is empty!</p>
+          <div v-show="items.length === 0">
+            <p style="width:250px; text-align:left">Your cart is empty!</p>
+          </div>
         </div>
       </div>
       <hr />
@@ -54,7 +56,8 @@
                     </td>
                     <td width="10%" align="center">
                       <p><span class="priceTag">{{ item.pizzaPrice }}</span></p>
-                      <button @click="addToCart(item)">Add to cart</button>
+                      <button @click="addToCart(item)" v-show="loggedIn === true">Add to cart</button>
+                      <button @click="$router.push('login')" v-show="loggedIn === false">Login to order</button>
                     </td>
                   </tr>
                 </table>

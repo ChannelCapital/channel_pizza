@@ -19,71 +19,62 @@
             <ErrorMessage name="email" class="error-feedback" />
           </div>
           <div class="form-group">
-            <label for="firstname">First name</label>
-            <Field name="firstname" type="text" class="form-control" />
-            <ErrorMessage name="firstname" class="error-feedback" />
+            <label for="firstName">First name</label>
+            <Field name="firstName" type="text" class="form-control" />
+            <ErrorMessage name="firstName" class="error-feedback" />
           </div>
           <div class="form-group">
-            <label for="lastname">Last name</label>
-            <Field name="lastname" type="text" class="form-control" />
-            <ErrorMessage name="lastname" class="error-feedback" />
+            <label for="lastName">Last name</label>
+            <Field name="lastName" type="text" class="form-control" />
+            <ErrorMessage name="lastName" class="error-feedback" />
           </div>
           <div class="form-group">
-            <label for="postcode">Postal code</label>
-            <Field v-model="code" name="postcode" type="text" class="form-control postcode" @input="postCodeSearch()" />
-            <ErrorMessage name="postcode" class="error-feedback" />
+            <label for="postCode">Postal code</label>
+            <Field v-model="code" name="postCode" type="text" class="form-control postcode" @input="postCodeSearch()" />
+            <ErrorMessage name="postCode" class="error-feedback" />
           </div>
           <div class="form-group">
             <label for="password">Password</label>
             <Field name="password" type="password" class="form-control" />
             <ErrorMessage name="password" class="error-feedback" />
           </div>
+          <div>
+            <table class="table table-striped postcode">
+              <tbody>
+                <tr v-if="postcode.country">
+                  <th scope="row">Country</th>
+                  <td>{{ postcode.country }}</td>
+                </tr>
 
+                <tr v-if="postcode.nhs_ha">
+                  <th scope="row">NHS Trust</th>
+                  <td>{{ postcode.nhs_ha }}</td>
+                </tr>
+
+                <tr v-if="postcode.parliamentary_constituency">
+                  <th scope="row">Parliament Constituency</th>
+                  <td>{{ postcode.parliamentary_constituency }}</td>
+                </tr>
+
+                <tr v-if="postcode.admin_district">
+                  <th scope="row">District</th>
+                  <td>{{ postcode.admin_district }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <div class="form-group">
             <button class="btn btn-primary btn-block" :disabled="!postcode.admin_district">
+            <!-- <button class="btn btn-primary btn-block"> -->
               <span
                 v-show="loading"
                 class="spinner-border spinner-border-sm"
               ></span>
-              Sign Up
+              Register
             </button>
           </div>
         </div>
       </Form>
-
-      <table class="table table-striped postcode">
-        <tbody>
-          <tr v-if="postcode.country">
-            <th scope="row">Country</th>
-            <td>{{ postcode.country }}</td>
-          </tr>
-
-          <tr v-if="postcode.nhs_ha">
-            <th scope="row">NHS Trust</th>
-            <td>{{ postcode.nhs_ha }}</td>
-          </tr>
-
-          <tr v-if="postcode.parliamentary_constituency">
-            <th scope="row">Parliament Constituency</th>
-            <td>{{ postcode.parliamentary_constituency }}</td>
-          </tr>
-
-          <tr v-if="postcode.admin_district">
-            <th scope="row">District</th>
-            <td>{{ postcode.admin_district }}</td>
-          </tr>
-
-<!--           <tr v-if="postcode.longitude">
-            <th scope="row">Longitude</th>
-            <td>{{ postcode.longitude }}</td>
-          </tr>
-
-          <tr v-if="postcode.latitude">
-            <th scope="row">Latitude</th>
-            <td>{{ postcode.latitude }}</td>
-          </tr> -->
-        </tbody>
-      </table>
 
       <div
         v-if="message"
@@ -120,17 +111,17 @@ export default {
         .required("Email is required!")
         .email("Email is invalid!")
         .max(50, "Must be maximum 50 characters!"),
-      firstname: yup
+      firstName: yup
         .string()
         .required("First name is required!")
         .min(2, "Must be at least 3 characters!")
         .max(20, "Must be maximum 20 characters!"),
-      lastname: yup
+      lastName: yup
         .string()
         .required("Last name is required!")
         .min(2, "Must be at least 3 characters!")
         .max(20, "Must be maximum 20 characters!"),
-      postcode: yup
+      postCode: yup
         .string()
         .required("Postal code is required!")
         .min(3, "Must be at least 3 characters!")
@@ -159,7 +150,7 @@ export default {
   },
   mounted() {
     if (this.loggedIn) {
-      this.$router.push("/profile");
+      this.$router.push("/home");
     }
   },
   methods: {

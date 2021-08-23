@@ -33,7 +33,7 @@ public class UserDetailsImpl implements UserDetails {
 	private Collection<? extends GrantedAuthority> authorities;
 
 	public UserDetailsImpl(String id, String username, String email, String firstName, String lastName, String postCode, String password,
-			Collection<? extends GrantedAuthority> authorities) {
+						   Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
@@ -43,6 +43,15 @@ public class UserDetailsImpl implements UserDetails {
 		this.password = password;
 		this.authorities = authorities;
 	}
+
+//	public UserDetailsImpl(String id, String username, String email, String password,
+//						   Collection<? extends GrantedAuthority> authorities) {
+//		this.id = id;
+//		this.username = username;
+//		this.email = email;
+//		this.password = password;
+//		this.authorities = authorities;
+//	}
 
 	public static UserDetailsImpl build(User user) {
 		List<GrantedAuthority> authorities = user.getRoles().stream()
