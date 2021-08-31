@@ -4,14 +4,6 @@
       <div class="header">
         <!-- https://codepen.io/joshbivens/pen/NNpYYR -->
         <h2>Welcome to Channel Pizza</h2>
-        <!-- <div>
-          <button @click="showCart = !showCart" v-show="!verified">
-            {{
-              items.length +
-              (items.length > 1 || items.length === 0 ? " items" : " item")
-            }}
-          </button>
-        </div> -->
       </div>
       <div v-show="loggedIn === true">
         <div class="cart" v-show="showCart">
@@ -67,7 +59,7 @@
         </div>
         <div class="checkout" v-show="verified">
           <h5 v-for="item in items" :key="item">
-            <strong>{{ item.quantity }}</strong> - {{ item.pizzaName }}<span> ${{ item.pizzaPrice * item.quantity }}</span>
+            <strong>{{ item.quantity }}</strong> x {{ item.pizzaName }}<span> = ${{ item.pizzaPrice * item.quantity }}</span>
           </h5>
           <hr />
           <div class="row">
@@ -75,7 +67,7 @@
               <h5>
                 Total: <span>${{ total }}</span>
               </h5>
-              <button>Looks Good</button> <button @click="(verified = false), (showCart = true)">Back</button>
+              <button @click="placeOrder(items)">Looks Good</button> <button @click="(verified = false), (showCart = true)">Back</button>
             </div>
             <div class="u-pull-right" v-show="loggedIn === false">
               <h5>
@@ -105,6 +97,7 @@
 <script>
 import UserService from "../services/user.service";
 
+
 export default {
   name: "Home",
   data() {
@@ -132,6 +125,9 @@ export default {
     );
   },
   computed: {
+    currentUser() {
+      return this.$store.state.auth.user;
+    },
     total() {
       var total = 0;
       for (var i = 0; i < this.items.length; i++) {
@@ -144,6 +140,10 @@ export default {
     },
   },
   methods: {
+    placeOrder(items) {
+      UserService.postOrder(items, this.currentUser.id);  // submit order
+      this.items = [];  // empty cart after order is submitted
+    },
     splitJoin(theText) {
       return theText.split(", ");
     },

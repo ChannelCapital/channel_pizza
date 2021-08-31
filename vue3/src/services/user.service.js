@@ -11,6 +11,26 @@ class UserService {
     return axios.get(API_URL + 'pizzas/' + pizzaId);
   }
 
+  postOrder(order, currentUserId) {
+    let orderedItems = [];
+
+    for (let index = 0; index < order.length; index++) {
+      orderedItems.push({
+        quantity: parseInt(order[index].quantity), 
+        pizzaPrice: order[index].pizzaPrice,
+        pizzaId: order[index].id
+      });
+      console.log(order[index]);
+    }
+
+    let orderItems = {
+      userId: currentUserId,
+      orderItem: orderedItems
+    }
+
+    return axios.post(API_URL + 'orders', orderItems, { headers: authHeader() })
+  }
+
   getUserBoard() {
     return axios.get(API_URL + 'user', { headers: authHeader() });
   }
