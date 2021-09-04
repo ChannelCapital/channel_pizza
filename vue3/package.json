@@ -5,7 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "vue-cli-service test:unit",
+    "e2e": "./node_modules/.bin/nightwatch ./tests/e2e.js --env chrome --headless",
+    "unit": "./node_modules/.bin/jest ./tests/unit.test.js --env chrome --headless"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -29,8 +32,12 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
+    "chromedriver": "^92.0.2",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
+    "geckodriver": "^2.0.3",
+    "jest": "^27.1.0",
+    "nightwatch": "^1.7.8",
     "node-sass": "^6.0.1",
     "sass-loader": "^12.1.0"
   },

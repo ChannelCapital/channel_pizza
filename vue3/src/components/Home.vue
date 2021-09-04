@@ -8,9 +8,9 @@
       <div v-show="loggedIn === true">
         <div class="cart" v-show="showCart">
           <div v-show="items.length > 0">
-            <table>
+            <table class="tableCart">
               <tr v-for="item in items" v-bind:key="item" transition="fade">
-                <td>{{ item.quantity }}x</td><td>{{ item.pizzaName }}</td><td>${{ item.pizzaPrice * item.quantity }} <button @click="removeFromCart(item)">X</button></td>
+                <td :class="item.id">{{ item.quantity }}x</td><td>{{ item.pizzaName }}</td><td>${{ (item.pizzaPrice * item.quantity).toFixed(2) }} <button @click="removeFromCart(item)">X</button></td>
               </tr>
             </table>
             <div>
@@ -36,7 +36,7 @@
                       <img :src="item.pizzaImageUrl" width="240" />
                     </td>
                     <td>
-                      <h5>{{ item.pizzaName }}</h5>
+                      <h5>{{ item.pizzaName }} {{ item.msg }}</h5>
                       <ul>
                         <li
                           v-for="ins in splitJoin(item.pizzaIngredients)"
@@ -47,9 +47,9 @@
                       </ul>
                     </td>
                     <td width="10%" align="center">
-                      <p><span class="priceTag">{{ item.pizzaPrice }}</span></p>
-                      <button @click="addToCart(item)" v-show="loggedIn === true">Add to cart</button>
-                      <button @click="$router.push('login')" v-show="loggedIn === false">Login to order</button>
+                      <p><span class="priceTag">{{ item.pizzaPrice.toFixed(2) }}</span></p>
+                      <button @click="addToCart(item)" v-show="loggedIn === true" :class="'pizzaIndex'+ item.index">Add to cart</button>
+                      <button @click="$router.push('login')" v-show="loggedIn === false" class="loginToOrder">Login to order</button>
                     </td>
                   </tr>
                 </table>
@@ -58,38 +58,38 @@
           </ul>
         </div>
         <div class="checkout" v-show="verified">
-          <h5 v-for="item in items" :key="item">
-            <strong>{{ item.quantity }}</strong> x {{ item.pizzaName }}<span> = ${{ item.pizzaPrice * item.quantity }}</span>
-          </h5>
-          <hr />
-          <div class="row">
-            <div class="u-pull-right" v-show="loggedIn === true">
-              <h5>
-                Total: <span>${{ total }}</span>
-              </h5>
-              <button @click="placeOrder(items)">Looks Good</button> <button @click="(verified = false), (showCart = true)">Back</button>
+          <div v-show="!ordered">
+            <h5 v-for="item in items" :key="item">
+              <strong>{{ item.quantity }}</strong> x {{ item.pizzaName }}<span> = ${{ (item.pizzaPrice * item.quantity).toFixed(2) }}</span>
+            </h5>
+            <hr />
+            <div class="row">
+              <div class="u-pull-right" v-show="loggedIn === true">
+                <h5>
+                  Total: <span class="totalCost">${{ total.toFixed(2) }}</span>
+                </h5>
+                <button @click="placeOrder(items)" class="placeOrder">Looks Good</button> <button @click="(verified = false), (showCart = true)">Back</button>
+              </div>
+              <div class="u-pull-right" v-show="loggedIn === false">
+                <h5>
+                  Total: <span>${{ total.toFixed(2) }}</span>
+                </h5>
+                <button @click="$router.push('login')">Log in</button>
+              </div>
             </div>
-            <div class="u-pull-right" v-show="loggedIn === false">
-              <h5>
-                Total: <span>${{ total }}</span>
-              </h5>
-              <button @click="$router.push('login')">Log in</button>
+          </div>
+          <div v-show="ordered">
+            <div class="row">
+              <div class="u-pull-right" v-show="loggedIn === true">
+                <h5 class="confirmation">
+                  We have received your order. It should be on its way to you within 30 minutes.
+                </h5>
+                <button @click="(verified = false, ordered = false), (showCart = true)" class="returnHome">Back</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <!--       <table>
-      <tr v-for="pizza in content" :key="pizza.pizzaId" class="job">
-        <td><a :href="'/pizza/' + pizza.id"><img :src="pizza.pizzaImageUrl" width="240"></a></td>
-        <td>
-          <h2>{{ pizza.pizzaName }} <span class="priceTag">{{ pizza.pizzaPrice }}</span></h2>
-          <ul>
-            <li v-for="ins in splitJoin(pizza.pizzaIngredients)" v-bind:key="ins" v-text="ins"></li>
-          </ul>
-        </td>
-      </tr>
-    </table> -->
     </header>
   </div>
 </template>
@@ -106,13 +106,18 @@ export default {
       items: [],
       showCart: true,
       verified: false,
-      quantity: 1,
+      ordered: false,
     };
   },
   mounted() {
     UserService.getPublicContent().then(
       (response) => {
         this.shop = response.data;
+
+        for (let index = 0; index < this.shop.length; index++) {
+          this.shop[index]['quantity'] = 0;
+          this.shop[index]['index'] = index + 1;
+        }
       },
       (error) => {
         this.shop =
@@ -142,7 +147,12 @@ export default {
   methods: {
     placeOrder(items) {
       UserService.postOrder(items, this.currentUser.id);  // submit order
-      this.items = [];  // empty cart after order is submitted
+      this.ordered = true;
+      for (let index = 0; index < this.items.length; index++) {
+        this.items[index]['quantity'] = 0;
+      }
+      this.items.splice(0)
+      this.$router.push("/home");
     },
     splitJoin(theText) {
       return theText.split(", ");

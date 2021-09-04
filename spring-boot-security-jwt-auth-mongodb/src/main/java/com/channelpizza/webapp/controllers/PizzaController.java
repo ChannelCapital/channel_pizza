@@ -82,9 +82,6 @@ public class PizzaController {
 			if(newPizza.getPizzaImageUrl() != null) {
 				pizza.setPizzaImageUrl(newPizza.getPizzaImageUrl());
 			}
-			if(newPizza.getQuantity() != null) {
-				pizza.setQuantity(newPizza.getQuantity());
-			}
 			return pizzaRepository.save(pizza);
 		})
 				.orElseGet(() -> {

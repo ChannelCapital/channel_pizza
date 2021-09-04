@@ -29,17 +29,15 @@ public class Pizza {
 
   private String pizzaImageUrl;
 
-  private Integer quantity;
 
   public Pizza() {
   }
 
-  public Pizza(String pizzaName, double pizzaPrice, String pizzaIngredients, String pizzaImageUrl, Integer quantity) {
+  public Pizza(String pizzaName, double pizzaPrice, String pizzaIngredients, String pizzaImageUrl) {
     this.pizzaName = pizzaName;
     this.pizzaIngredients = pizzaIngredients;
     this.pizzaPrice = pizzaPrice;
     this.pizzaImageUrl = pizzaImageUrl;
-    this.quantity = quantity;
   }
 
   public String getId() {
@@ -82,11 +80,4 @@ public class Pizza {
     this.pizzaImageUrl = pizzaImageUrl;
   }
 
-  public Integer getQuantity() {
-    return quantity;
-  }
-
-  public void setQuantity(Integer quantity) {
-    this.quantity = quantity;
-  }
 }

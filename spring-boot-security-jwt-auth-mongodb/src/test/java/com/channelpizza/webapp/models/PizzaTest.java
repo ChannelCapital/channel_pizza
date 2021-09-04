@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PizzaTest {
 
     Pizza pizza = new Pizza(
-            "Margarita", 2.5, "Tomato sauce, Cheese", "http://image.url/file.jpg", 1
+            "Margarita", 2.5, "Tomato sauce, Cheese", "http://image.url/file.jpg"
     );
 
     @Test
@@ -30,8 +30,4 @@ class PizzaTest {
         assertEquals("http://image.url/file.jpg", pizza.getPizzaImageUrl());
     }
 
-    @Test
-    void getQuantity() {
-        assertEquals(1, pizza.getQuantity());
-    }
 }

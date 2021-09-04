@@ -21,9 +21,10 @@ dependencies {
 
 //    testImplementation 'junit:junit:4.13.2'
 //    testImplementation 'org.assertj:assertj-core:3.11.1'
-//    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.0.0'
+    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.0.0'
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.2'
-    testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+//    testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.11.2'
 
 
 }

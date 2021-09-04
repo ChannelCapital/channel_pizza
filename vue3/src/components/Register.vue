@@ -155,6 +155,7 @@ export default {
   },
   methods: {
     postCodeSearch: function () {
+      this.postcode = [];
       axios.get('http://localhost:8000/postcodes/' + this.code).then(response => {
         this.postcode = response.data.result;
         this.posterror=0;

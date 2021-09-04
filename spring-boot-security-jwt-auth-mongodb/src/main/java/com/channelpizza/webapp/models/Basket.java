@@ -7,23 +7,23 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-@Document(collection = "orders")
-public class Order {
+@Document(collection = "baskets")
+public class Basket {
 
     @Id
     private String id;
 
     private String userId;
 
-    @Field("orderItem")
-    private ArrayList<OrderItem> orderItem;
+    @Field("basketItem")
+    private ArrayList<OrderItem> basketItem;
 
-    public Order() {
+    public Basket() {
     }
 
-    public Order(String userId, ArrayList<OrderItem> orderItem) {
+    public Basket(String userId, ArrayList<OrderItem> basketItem) {
         this.userId = userId;
-        this.orderItem = orderItem;
+        this.basketItem = basketItem;
     }
 
     public String getId() {
@@ -35,7 +35,7 @@ public class Order {
     }
 
     public List<OrderItem> getOrderItem() {
-        return orderItem;
+        return basketItem;
     }
 
     public void setId(String id) {
@@ -46,7 +46,8 @@ public class Order {
         this.userId = userId;
     }
 
-    public void setOrderItem(ArrayList<OrderItem> orderItem) {
-        this.orderItem = orderItem;
+    public void setOrderItem(ArrayList<OrderItem> basketItem) {
+        this.basketItem = basketItem;
     }
+
 }
