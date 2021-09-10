@@ -3,6 +3,7 @@ package com.channelpizza.webapp.repository;
 import com.channelpizza.webapp.models.Order;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface OrderRepository extends MongoRepository<Order, String> {
@@ -11,6 +12,6 @@ public interface OrderRepository extends MongoRepository<Order, String> {
 
   Boolean existsOrderById(String orderId);
 
-  Optional<Order> findOrdersByUserId(String orderByUserId);
+  List<Order> findOrdersByUserId(String orderByUserId);
 
 }

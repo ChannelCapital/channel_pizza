@@ -9,14 +9,16 @@ public class OrderItem {
     private int quantity;
     private double pizzaPrice;
     private String pizzaId;
+    private String pizzaName;
 
     public OrderItem() {
     }
 
-    public OrderItem(int quantity, double pizzaPrice, String pizzaId) {
+    public OrderItem(int quantity, double pizzaPrice, String pizzaId, String pizzaName) {
         this.quantity = quantity;
         this.pizzaPrice = pizzaPrice;
         this.pizzaId = pizzaId;
+        this.pizzaName = pizzaName;
     }
 
     public double getPizzaPrice() {
@@ -31,4 +33,7 @@ public class OrderItem {
         return pizzaId;
     }
 
+    public String getPizzaName() {
+        return pizzaName;
+    }
 }

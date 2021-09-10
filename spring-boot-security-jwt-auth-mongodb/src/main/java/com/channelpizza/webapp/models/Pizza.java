@@ -1,6 +1,7 @@
 package com.channelpizza.webapp.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -18,6 +19,7 @@ public class Pizza {
   @NotBlank
   @NotNull
   @Size(max = 32)
+  @Indexed(unique = true)
   private String pizzaName;
 
   private double pizzaPrice;
@@ -29,11 +31,18 @@ public class Pizza {
 
   private String pizzaImageUrl;
 
-
   public Pizza() {
   }
 
   public Pizza(String pizzaName, double pizzaPrice, String pizzaIngredients, String pizzaImageUrl) {
+    this.pizzaName = pizzaName;
+    this.pizzaIngredients = pizzaIngredients;
+    this.pizzaPrice = pizzaPrice;
+    this.pizzaImageUrl = pizzaImageUrl;
+  }
+
+  public Pizza(String id,String pizzaName, double pizzaPrice, String pizzaIngredients, String pizzaImageUrl) {
+    this.id = id;
     this.pizzaName = pizzaName;
     this.pizzaIngredients = pizzaIngredients;
     this.pizzaPrice = pizzaPrice;

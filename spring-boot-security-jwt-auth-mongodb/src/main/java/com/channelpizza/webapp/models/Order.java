@@ -18,12 +18,15 @@ public class Order {
     @Field("orderItem")
     private ArrayList<OrderItem> orderItem;
 
+    private int deliveryStatus;
+
     public Order() {
     }
 
-    public Order(String userId, ArrayList<OrderItem> orderItem) {
+    public Order(String userId, ArrayList<OrderItem> orderItem, int deliveryStatus) {
         this.userId = userId;
         this.orderItem = orderItem;
+        this.deliveryStatus = deliveryStatus;
     }
 
     public String getId() {
@@ -48,5 +51,13 @@ public class Order {
 
     public void setOrderItem(ArrayList<OrderItem> orderItem) {
         this.orderItem = orderItem;
+    }
+
+    public int getDeliveryStatus() {
+        return deliveryStatus;
+    }
+
+    public void setDeliveryStatus(int deliveryStatus) {
+        this.deliveryStatus = deliveryStatus;
     }
 }

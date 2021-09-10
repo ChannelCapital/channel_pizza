@@ -31,15 +31,16 @@ public class OrderController {
 		return orderRepository.findAll();
 	}
 
-	@GetMapping("{orderId}")
-	@PreAuthorize("hasRole('ADMIN')")
-	public Optional<Order> getOrderById(@PathVariable ("orderId") String orderId) {
-		return orderRepository.findById(orderId);
-	}
+//	@GetMapping("{orderId}")
+//	@PreAuthorize("hasRole('ADMIN')")
+//	public Optional<Order> getOrderById(@PathVariable ("orderId") String orderId) {
+//		return orderRepository.findById(orderId);
+//	}
 
 	@GetMapping("{userId}")
-	@PreAuthorize("hasRole('ADMIN')")
-	public Optional<Order> getOrdersByUserId(@PathVariable ("userId") String userId) {
+	@PreAuthorize("hasRole('USER')")
+	public List<Order> getOrdersByUserId(@PathVariable ("userId") String userId) {
+
 		return orderRepository.findOrdersByUserId(userId);
 	}
 

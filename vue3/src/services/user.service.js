@@ -10,6 +10,9 @@ class UserService {
   getPizzaContent(pizzaId) {
     return axios.get(API_URL + 'pizzas/' + pizzaId);
   }
+  getPizzaByIngredient(pizzaIngredient) {
+    return axios.get(API_URL + 'pizzas/ingredients/' + pizzaIngredient);
+  }
 
   postOrder(order, currentUserId) {
     let orderedItems = [];
@@ -18,7 +21,8 @@ class UserService {
       orderedItems.push({
         quantity: parseInt(order[index].quantity), 
         pizzaPrice: order[index].pizzaPrice,
-        pizzaId: order[index].id
+        pizzaId: order[index].id,
+        pizzaName: order[index].pizzaName
       });
       console.log(order[index]);
     }
@@ -29,6 +33,17 @@ class UserService {
     }
 
     return axios.post(API_URL + 'orders', orderItems, { headers: authHeader() })
+  }
+
+  getOpenOrders(currentUserId) {
+    // console.log("getOpenOrders UserId:" + currentUserId);
+    return axios.get(API_URL + 'orders/' + currentUserId, { headers: authHeader() });
+  }
+
+  createPizza(pizza) {
+
+    return axios.post(API_URL + 'pizzas', pizza, { headers: authHeader() })
+
   }
 
   getUserBoard() {

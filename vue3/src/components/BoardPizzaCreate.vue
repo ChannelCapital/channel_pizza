@@ -6,22 +6,27 @@
         src="../assets/pizzaAvatar.jpeg"
         class="profile-img-card"
       />
-      <Form @submit="handleRegister" :validation-schema="schema">
+      <Form @submit="createPizza" :validation-schema="schema" ref="form">
         <div v-if="!successful">
           <div class="form-group">
             <label for="pizzaName">Pizza name</label>
-            <Field name="pizzaName" type="text" class="form-control" />
+            <Field name="pizzaName" type="text" class="form-control" v-model="pizzaForm.pizzaFName"/>
             <ErrorMessage name="pizzaName" class="error-feedback" />
           </div>
           <div class="form-group">
             <label for="pizzaIngredients">Pizza ingredients</label>
-            <Field name="pizzaIngredients" type="text" class="form-control" />
+            <Field name="pizzaIngredients" type="text" class="form-control" v-model="pizzaForm.pizzaFIn"/>
             <ErrorMessage name="pizzaIngredients" class="error-feedback" />
           </div>
           <div class="form-group">
             <label for="pizzaPrice">Pizza price</label>
-            <Field name="pizzaPrice" type="text" class="form-control" />
+            <Field name="pizzaPrice" type="text" class="form-control" v-model="pizzaForm.pizzaFPrice"/>
             <ErrorMessage name="pizzaPrice" class="error-feedback" />
+          </div>
+          <div class="form-group">
+            <label for="pizzaImageUrl">Pizza image</label>
+            <Field name="pizzaImageUrl" type="text" class="form-control" v-model="pizzaForm.pizzaFUrl"/>
+            <ErrorMessage name="pizzaImageUrl" class="error-feedback" />
           </div>
 
           <div class="form-group">
@@ -32,6 +37,7 @@
               ></span>
               Sign Up
             </button>
+            <button type="button" @click="reset">Cancel</button>
           </div>
         </div>
       </Form>
@@ -48,6 +54,7 @@
 </template>
 
 <script>
+import UserService from "../services/user.service";
 import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 
@@ -65,22 +72,43 @@ export default {
         .required("Pizza name is required!")
         .min(3, "Must be at least 3 characters!")
         .max(20, "Must be maximum 20 characters!"),
+
+      pizzaPrice: yup
+        .number()
+        .required("Price is required!")
+        .min(1, "Price must be at least 1$!")
+        .max(20, "Price can not exceed 20$!")
+        .test("maxDigitsAfterDecimal", "Price can have 2 digits after decimal or less",(pizzaPrice) => /^\d+(\.\d{1,2})?$/.test(pizzaPrice)),
       pizzaIngredients: yup
         .string()
         .required("Ingredients are required!")
-        .email("Ingredients are invalid!")
+        .min(4,"Ingredients are invalid!")
         .max(50, "Must be maximum 50 characters!"),
-      pizzaPrice: yup
+      pizzaImageUrl: yup
         .string()
-        .required("Price is required!")
-        .min(1, "Must be at least 1 characters!")
-        .max(2, "Must be maximum 2 characters!"),
+        .required("Url to is required!")
+        .min(10, "Must be at least 1 characters!")
+        .max(256, "Must be maximum 2 characters!")
+        .test("Check URL",
+          (pizzaImageUrl) => {
+            if (pizzaImageUrl) {
+              return pizzaImageUrl.startsWith("https://") || pizzaImageUrl.startsWith("http://") ? true : false;
+            }
+          }
+
+        ),
     });
 
     return {
       successful: false,
       loading: false,
       message: "",
+      pizzaForm: {
+        pizzaFName: "",
+        pizzaFPrice: "",
+        pizzaFIn: "",
+        pizzaFUrl: "",
+      },
       schema,
     };
   },
@@ -88,30 +116,18 @@ export default {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
+    currentUser() {
+      return this.$store.state.auth.user;
+    }
   },
   methods: {
-    handleRegister(user) {
-      this.message = "";
-      this.successful = false;
-      this.loading = true;
-
-      this.$store.dispatch("auth/register", user).then(
-        (data) => {
-          this.message = data.message;
-          this.successful = true;
-          this.loading = false;
-        },
-        (error) => {
-          this.message =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-          this.successful = false;
-          this.loading = false;
-        }
-      );
+    createPizza(pizza) {
+      UserService.createPizza(pizza);
+      console.log(pizza);
+      this.pizzaForm.pizzaFName = "",
+      this.pizzaForm.pizzaFPrice = "",
+      this.pizzaForm.pizzaFIn = "",
+      this.pizzaForm.pizzaFUrl = ""
     },
   },
 };

@@ -3,6 +3,7 @@ package com.channelpizza.webapp.controllers;
 import com.channelpizza.webapp.models.Pizza;
 import com.channelpizza.webapp.repository.PizzaRepository;
 import com.channelpizza.webapp.repository.RoleRepository;
+import com.channelpizza.webapp.security.services.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,9 @@ import java.util.Optional;
 public class PizzaController {
 
 	@Autowired
+	PizzaService pizzaService;
+
+	@Autowired
 	PizzaRepository pizzaRepository;
 
 	@Autowired
@@ -36,23 +40,38 @@ public class PizzaController {
 		return pizzaRepository.findById(pizzaId);
 	}
 
+	@GetMapping("/ingredients/{ingredient}")
+	public List<Pizza> getByIngredients(@PathVariable ("ingredient") String pizzaIngredient) { return pizzaRepository.findPizzasByPizzaIngredientsContaining(pizzaIngredient);}
+
 	@PostMapping("")
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Object> createPizza(@Valid @RequestBody Pizza pizza) {
-		Pizza savedPizza = pizzaRepository.save(pizza);
 
-		URI location = ServletUriComponentsBuilder
-				.fromCurrentRequest()
-				.path("/{id}")
-				.buildAndExpand(savedPizza.getId()).toUri();
 
-		System.out.println("Pizza has been created.");
-		return ResponseEntity.created(location).build();
+		String pName = pizza.getPizzaName();
+
+		if(pizzaRepository.findPizzaByPizzaName(pName) == null ) {
+			Pizza savedPizza = pizzaRepository.insert(pizza);
+
+			URI location = ServletUriComponentsBuilder
+					.fromCurrentRequest()
+					.path("/{id}")
+					.buildAndExpand(savedPizza.getId()).toUri();
+
+			System.out.println("Pizza has been created.");
+//			return ResponseEntity.created(location).build();
+			return new ResponseEntity<>(HttpStatus.CREATED);
+		}
+
+		System.out.println("Pizza name already exists.");
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+
 	}
 
 	@DeleteMapping("{pizzaId}")
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<Object> deletePizza(@PathVariable ("pizzaId") String pizzaId) {
+	public ResponseEntity<Object> deletePizzaById(@PathVariable ("pizzaId") String pizzaId) {
 		Optional<Pizza> pizza = pizzaRepository.findById(pizzaId);
 
 		if (pizza.isPresent()) {

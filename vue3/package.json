@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "e2e": "./node_modules/.bin/nightwatch ./tests/e2e.js --env chrome --headless",
+    "e2e": "./node_modules/.bin/nightwatch ./tests/e2e.js --env chrome",
     "test": "vue-cli-service test:unit",
     "unit": "vue-cli-service test:unit --watch"
   },

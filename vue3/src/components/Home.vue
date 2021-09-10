@@ -23,20 +23,56 @@
             <p style="width:250px; text-align:left">Your cart is empty!</p>
           </div>
         </div>
+        <div class="delivery" v-show="delivery">
+          <div v-show="orders.length > 0">
+            <table class="tableCart">
+              <tr>
+                <td align="left" colspan="2">Your order is...</td>
+              </tr>
+              <tr v-for="order in orders" v-bind:key="order" transition="fade" style="border: 1px solid">
+                <td v-show="order.deliveryStatus === 0" width="120px">
+                    <p class="orderStatus">...being prepared.</p>
+                </td>
+                <td v-show="order.deliveryStatus === 1">
+                    <p class="orderStatus">...on its way.</p>
+                </td>
+                <!-- <td :class="order.id">{{ order.id }}</td> -->
+                <td v-show="order.deliveryStatus < 2">
+                  <div v-for="pizzaa in order.orderItem" v-bind:key="pizzaa" transition="fade">
+                    <ul>
+                      <li class="orderStatus">{{ pizzaa.quantity }}x {{ pizzaa.pizzaName }}</li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            </table>            
+          </div>
+        </div>
       </div>
       <hr />
       <div class="container">
         <div class="shop" v-show="!verified">
-          <ul>
-            <li v-for="item in shop" :key="item">
+
+          <!-- <input type="text" v-model="ingredient" placeholder="Filter by ingredient" @input="filterByIngredient()"/> -->
+
+          <ul style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <li v-for="item in shop" :key="item" style="width: 300px">
               <div>
                 <table>
                   <tr>
-                    <td width="240px">
-                      <img :src="item.pizzaImageUrl" width="240" />
+                    <td width="240px" colspan="2">
+                      <div class="imageTd">
+                        <img :src="item.pizzaImageUrl" width="240" />
+                      </div>
                     </td>
-                    <td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
                       <h5>{{ item.pizzaName }} {{ item.msg }}</h5>
+                    </td>
+                  </tr>
+                  <tr style="height: 150px">
+                    <td>
                       <ul>
                         <li
                           v-for="ins in splitJoin(item.pizzaIngredients)"
@@ -46,7 +82,7 @@
                         ></li>
                       </ul>
                     </td>
-                    <td width="10%" align="center">
+                    <td align="center">
                       <p><span class="priceTag">{{ item.pizzaPrice.toFixed(2) }}</span></p>
                       <button @click="addToCart(item)" v-show="loggedIn === true" :class="'pizzaIndex'+ item.index">Add to cart</button>
                       <button @click="$router.push('login')" v-show="loggedIn === false" class="loginToOrder">Login to order</button>
@@ -84,7 +120,7 @@
                 <h5 class="confirmation">
                   We have received your order. It should be on its way to you within 30 minutes.
                 </h5>
-                <button @click="(verified = false, ordered = false), (showCart = true)" class="returnHome">Back</button>
+                <button @click="reloadPage" class="returnHome">Back</button>
               </div>
             </div>
           </div>
@@ -97,19 +133,34 @@
 <script>
 import UserService from "../services/user.service";
 
-
 export default {
   name: "Home",
   data() {
     return {
       shop: "",
+      orders: "",
       items: [],
       showCart: true,
       verified: false,
       ordered: false,
+      delivery: true
     };
   },
   mounted() {
+    UserService.getOpenOrders(this.currentUser.id).then(
+      (response) => {
+        this.orders = response.data;
+        console.log(this.orders)
+      },
+      (error) => {
+        this.orders =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+      },
+    );
     UserService.getPublicContent().then(
       (response) => {
         this.shop = response.data;
@@ -146,6 +197,7 @@ export default {
   },
   methods: {
     placeOrder(items) {
+      items['deliveryStatus']=0;
       UserService.postOrder(items, this.currentUser.id);  // submit order
       this.ordered = true;
       for (let index = 0; index < this.items.length; index++) {
@@ -186,6 +238,9 @@ export default {
         this.items.splice(this.items.indexOf(item), 1);
       }
     },
+    reloadPage() {
+      window.location.reload();
+    }
   },
 };
 </script>
@@ -224,13 +279,13 @@ td {
   vertical-align: top;
 }
 .tag {
-  font-size: 12px;
-  display: inline;
+  font-size: 10px;
   background-color: cadetblue;
   padding: 5px 5px;
   border-radius: 12px;
   color: white;
   text-transform: uppercase;
+  margin: 5px 0;
 }
 
 .header {
@@ -295,6 +350,7 @@ td {
 li,
 p {
   margin-bottom: 0;
+  max-width: max-content;
 }
 .cart button {
   /* margin: 20px 0 10px;*/
@@ -350,4 +406,46 @@ p {
     font-weight: bold;
     letter-spacing: -2px;
   }
+
+
+.delivery > div {
+  z-index: 100;
+  background: #fff;
+  padding: 20px 30px;
+  position: absolute;
+  right: 30px;
+  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.3);
+}
+.delivery table {
+  width: 250px;
+}
+
+.delivery div {
+  text-align: right;
+}
+.delivery ul {
+  margin-bottom: 0;
+}
+.delivery button {
+  /* margin: 20px 0 10px;*/
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.delivery input {
+  width: 30px;
+}
+
+.orderStatus {
+  font-size: 11px;
+}
+.imageTd {
+    padding: 0 !important;
+    height: 150px;
+    overflow: hidden;
+}
+button[class^="pizzaIndex"] {
+  padding: 10px 5px;
+}
 </style>
