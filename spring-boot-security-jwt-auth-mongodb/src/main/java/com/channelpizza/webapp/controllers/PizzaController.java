@@ -47,7 +47,6 @@ public class PizzaController {
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Object> createPizza(@Valid @RequestBody Pizza pizza) {
 
-
 		String pName = pizza.getPizzaName();
 
 		if(pizzaRepository.findPizzaByPizzaName(pName) == null ) {
@@ -65,7 +64,6 @@ public class PizzaController {
 
 		System.out.println("Pizza name already exists.");
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
 
 	}
 

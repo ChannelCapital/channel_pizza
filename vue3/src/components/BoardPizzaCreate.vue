@@ -35,9 +35,8 @@
                 v-show="loading"
                 class="spinner-border spinner-border-sm"
               ></span>
-              Sign Up
+              Create Pizza
             </button>
-            <button type="button" @click="reset">Cancel</button>
           </div>
         </div>
       </Form>
@@ -88,7 +87,7 @@ export default {
         .string()
         .required("Url to is required!")
         .min(10, "Must be at least 1 characters!")
-        .max(256, "Must be maximum 2 characters!")
+        .max(512, "Must be maximum 2 characters!")
         .test("Check URL",
           (pizzaImageUrl) => {
             if (pizzaImageUrl) {

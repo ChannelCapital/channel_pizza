@@ -12,7 +12,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -31,16 +30,9 @@ public class OrderController {
 		return orderRepository.findAll();
 	}
 
-//	@GetMapping("{orderId}")
-//	@PreAuthorize("hasRole('ADMIN')")
-//	public Optional<Order> getOrderById(@PathVariable ("orderId") String orderId) {
-//		return orderRepository.findById(orderId);
-//	}
-
 	@GetMapping("{userId}")
 	@PreAuthorize("hasRole('USER')")
 	public List<Order> getOrdersByUserId(@PathVariable ("userId") String userId) {
-
 		return orderRepository.findOrdersByUserId(userId);
 	}
 
@@ -57,6 +49,5 @@ public class OrderController {
 		System.out.println("Order has been created.");
 		return ResponseEntity.created(location).build();
 	}
-
 
 }

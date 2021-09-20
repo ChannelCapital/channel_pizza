@@ -15,22 +15,8 @@
             <font-awesome-icon icon="home" /> Home
           </router-link>
         </li>
-        
-        <li v-if="showAdminBoard" class="nav-item">
-          <router-link to="/admin" class="nav-link">Admin Board</router-link>
-        </li>
         <li v-if="showPizzaCreateBoard" class="nav-item">
           <router-link to="/create-pizza" class="nav-link">Create Pizza</router-link>
-        </li>
-        <li v-if="showPizzaUpdateBoard" class="nav-item">
-          <router-link to="/update-pizza" class="nav-link">Update Pizza</router-link>
-        </li>
-
-        <li v-if="showPizzaDeleteBoard" class="nav-item">
-          <router-link to="/delete-pizza" class="nav-link">Delete Pizza</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link v-if="currentUser" to="/user" class="nav-link">User</router-link>
         </li>
       </div>
 

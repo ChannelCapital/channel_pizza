@@ -1,13 +1,18 @@
 package com.channelpizza.webapp.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.validation.constraints.Size;
 
 @Document(collection = "roles")
 public class Role {
   @Id
   private String id;
 
+  @Size(max =32)
+  @Indexed(unique = true)
   private ERole name;
 
   public Role() {
