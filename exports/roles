@@ -1,3 +1,0 @@
-{"_id":{"$oid":"6122a27fb6296c8bb505bc52"},"name":"ROLE_USER"}
-{"_id":{"$oid":"6122a27fb6296c8bb505bc53"},"name":"ROLE_MODERATOR"}
-{"_id":{"$oid":"6122a27fb6296c8bb505bc54"},"name":"ROLE_ADMIN"}
