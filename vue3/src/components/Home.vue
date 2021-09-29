@@ -36,7 +36,6 @@
                 <td v-show="order.deliveryStatus === 1">
                     <p class="orderStatus">...on its way.</p>
                 </td>
-                <!-- <td :class="order.id">{{ order.id }}</td> -->
                 <td v-show="order.deliveryStatus < 2">
                   <div v-for="pizzaa in order.orderItem" v-bind:key="pizzaa" transition="fade">
                     <ul>
@@ -52,9 +51,6 @@
       <hr />
       <div class="container">
         <div class="shop" v-show="!verified">
-
-          <!-- <input type="text" v-model="ingredient" placeholder="Filter by ingredient" @input="filterByIngredient()"/> -->
-
           <ul style="display: flex; flex-wrap: wrap; justify-content: space-between;">
             <li v-for="item in shop" :key="item" style="width: 300px">
               <div>
@@ -132,6 +128,23 @@
 
 <script>
 import UserService from "../services/user.service";
+import PizzaService from "../services/pizza.service";
+
+/**
+ * Home component of application. Listing, adding to basket, checkout, and order confirmation are handled within this page.
+ * @author Melih Yayli <melihyayli@gmail.com>
+ * @vue-computed {} currentUser - current user is returned 
+ * @vue-computed {} total - total amount of items in basket is returned 
+ * @vue-computed {} loggedIn - checks if any user is logged in
+ * @vue-event {items} placeOrder - array of items in cart are placed as order
+ * @vue-event {String} splitJoin - splits string on "," into an array
+ * @vue-event {item} addToCart - adds item to cart
+ * @vue-event {item} removeFromCart - removes item from cart
+ * @vue-event {} reloadPage - reloads page in order to return from order confirmation to Home page
+ * @vue-data {array} shop - retrieved json data of pizza types to populate page is stored as an array
+ * @vue-data {array} orders - retrieved json data of to be delivered pizza orders of current user is stored as an array
+ * @vue-data {object} items - pizzas added to basket are stored in this array
+ */ 
 
 export default {
   name: "Home",
@@ -147,21 +160,7 @@ export default {
     };
   },
   mounted() {
-    UserService.getOpenOrders(this.currentUser.id).then(
-      (response) => {
-        this.orders = response.data;
-        console.log(this.orders)
-      },
-      (error) => {
-        this.orders =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-      },
-    );
-    UserService.getPublicContent().then(
+    PizzaService.getPizzaContent().then(
       (response) => {
         this.shop = response.data;
 
@@ -179,6 +178,22 @@ export default {
           error.toString();
       }
     );
+    if(this.currentUser) {      
+      UserService.getOpenOrders(this.currentUser.id).then(
+        (response) => {
+          this.orders = response.data;
+          console.log(this.orders)
+        },
+        (error) => {
+          this.orders =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+        },
+      );  
+    }
   },
   computed: {
     currentUser() {
@@ -187,7 +202,7 @@ export default {
     total() {
       var total = 0;
       for (var i = 0; i < this.items.length; i++) {
-        total += this.items[i].pizzaPrice * this.items[i].quantity; // won't add up price of multiple instances of same pizza
+        total += this.items[i].pizzaPrice * this.items[i].quantity;
       }
       return total;
     },
@@ -198,7 +213,7 @@ export default {
   methods: {
     placeOrder(items) {
       items['deliveryStatus']=0;
-      UserService.postOrder(items, this.currentUser.id);  // submit order
+      UserService.postOrder(items, this.currentUser.id);
       this.ordered = true;
       for (let index = 0; index < this.items.length; index++) {
         this.items[index]['quantity'] = 0;
@@ -213,13 +228,12 @@ export default {
       const indexItem = this.items.findIndex(x=>x.id === item.id);
       if(indexItem >= 0){
         item.quantity += 1;
-        // this.items.push(item); // causes count error when added or removed
       }else{
         item.quantity += 1;
         this.items.push(item);
       }
     },
-    addClick(item) { // https://stackoverflow.com/questions/48404072/how-to-remove-the-duplicate-list-with-vue
+    addClick(item) {
       this.showcart = false;
       const indexItem = this.items.findIndex(x=>x.id === item.id);
       if(indexItem >= 0){
@@ -255,7 +269,6 @@ ul {
   padding: 0;
 }
 li {
-  /* display: inline-block; */
   margin: 0 10px;
 }
 a {
@@ -353,7 +366,6 @@ p {
   max-width: max-content;
 }
 .cart button {
-  /* margin: 20px 0 10px;*/
   text-transform: uppercase;
   text-decoration: none;
   font-weight: bold;
@@ -406,8 +418,6 @@ p {
     font-weight: bold;
     letter-spacing: -2px;
   }
-
-
 .delivery > div {
   z-index: 100;
   background: #fff;

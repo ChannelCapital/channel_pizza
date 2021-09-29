@@ -46,7 +46,7 @@ public class SpringBootSecurityJwtMongodbApplication {
 			));
 			pizzasToBeCreated.add(new Pizza(
 					"Quattro Formaggi",
-					5.05,
+					4.05,
 					"mozzarella, gorgonzola, ricotta, parmesan",
 					"https://image.freepik.com/free-photo/delicious-italian-pizza-quattro-formaggi-with-four-cheeses_194143-1059.jpg"
 			));
@@ -58,19 +58,19 @@ public class SpringBootSecurityJwtMongodbApplication {
 			));
 			pizzasToBeCreated.add(new Pizza(
 					"Hawaiian",
-					5.05,
+					6.05,
 					"ham, pineapples, cheese",
 					"https://sparkpeo.hs.llnwd.net/e1/resize/630m620/e2/guid/Hawaiian-Pizza-SparkRecipes-Un-Chained-Contest-Finalist-/788bdd98-898c-4900-ad38-9fa6ad1fe0dd.jpg"
 			));
 			pizzasToBeCreated.add(new Pizza(
 					"Buffalo",
-					5.05,
+					4.35,
 					"shredded chicken, buffalo sauce, blue cheese crumbles, cilantro",
 					"https://assets.website-files.com/5f1651e7d193211bb34def1a/5f1f08dcbf513648fb367834_pizza_t20_KoN9gV.jpg"
 			));
 			pizzasToBeCreated.add(new Pizza(
 					"BBQ Chicken",
-					5.05,
+					5.15,
 					"bbq sauce, mozzarella, chicken, red onions, cilantro",
 					"https://www.diabetesfoodhub.org/system/thumbs/system/images/recipes/Recid_76_BBQ_Chicken_Pizza_iStock-484653761_02262018_2959761669.jpg"
 			));

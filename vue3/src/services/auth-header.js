@@ -1,3 +1,7 @@
+/**
+ * Function to set authentication header
+ * @returns Bearer token for authentication header
+ */
 export default function authHeader() {
   let user = JSON.parse(localStorage.getItem('user'));
 

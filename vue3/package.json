@@ -6,9 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "e2e": "./node_modules/.bin/nightwatch ./tests/e2e.js --env chrome",
-    "test": "vue-cli-service test:unit",
-    "unit": "vue-cli-service test:unit --watch"
+    "ui-test": "./node_modules/.bin/nightwatch ./tests/ui.test.js --env chrome",
+    "build:doc": "jsdoc -c ./jsdoc.json"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -40,6 +39,8 @@
     "eslint-plugin-vue": "^7.0.0",
     "geckodriver": "^2.0.3",
     "jest": "^27.1.0",
+    "jsdoc": "^3.6.7",
+    "jsdoc-vuejs": "^4.0.0",
     "nightwatch": "^1.7.8",
     "node-sass": "^6.0.1",
     "sass-loader": "^12.1.0",

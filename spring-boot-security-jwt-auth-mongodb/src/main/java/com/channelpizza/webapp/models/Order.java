@@ -7,6 +7,10 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Entity for bundling items into an order
+ * @author Melih Yayli
+ */
 @Document(collection = "orders")
 public class Order {
 

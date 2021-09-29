@@ -13,6 +13,10 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
+/**
+ * Controller class to handle order related operations
+ * @author Melih Yayli
+ */
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/v1/orders")
@@ -30,12 +34,22 @@ public class OrderController {
 		return orderRepository.findAll();
 	}
 
+	/**
+	 * Method to retrieve orders belonging to user
+	 * @param userId User id used to filter database
+	 * @return
+	 */
 	@GetMapping("{userId}")
 	@PreAuthorize("hasRole('USER')")
 	public List<Order> getOrdersByUserId(@PathVariable ("userId") String userId) {
 		return orderRepository.findOrdersByUserId(userId);
 	}
 
+	/**
+	 * Method to post orders to database
+	 * @param order User id, pizza items and quantities
+	 * @return
+	 */
 	@PostMapping("")
 	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<Object> createOrder(@Valid @RequestBody Order order) {

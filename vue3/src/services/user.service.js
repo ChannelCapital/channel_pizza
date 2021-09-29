@@ -4,15 +4,6 @@ import authHeader from './auth-header';
 const API_URL = 'http://localhost:8080/api/v1/';
 
 class UserService {
-  getPublicContent() {
-    return axios.get(API_URL + 'pizzas');
-  }
-  getPizzaContent(pizzaId) {
-    return axios.get(API_URL + 'pizzas/' + pizzaId);
-  }
-  getPizzaByIngredient(pizzaIngredient) {
-    return axios.get(API_URL + 'pizzas/ingredients/' + pizzaIngredient);
-  }
 
   postOrder(order, currentUserId) {
     let orderedItems = [];
@@ -36,7 +27,6 @@ class UserService {
   }
 
   getOpenOrders(currentUserId) {
-    // console.log("getOpenOrders UserId:" + currentUserId);
     return axios.get(API_URL + 'orders/' + currentUserId, { headers: authHeader() });
   }
 

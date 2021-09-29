@@ -2,7 +2,6 @@ package com.channelpizza.webapp.controllers;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -10,8 +9,6 @@ import javax.validation.Valid;
 
 import com.channelpizza.webapp.payload.request.SignupRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -35,6 +32,10 @@ import com.channelpizza.webapp.repository.UserRepository;
 import com.channelpizza.webapp.security.jwt.JwtUtils;
 import com.channelpizza.webapp.security.services.UserDetailsImpl;
 
+/**
+ * Controller class for authentication and registration purposes
+ * @author Melih Yayli
+ */
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
@@ -54,6 +55,11 @@ public class AuthController {
 	@Autowired
 	JwtUtils jwtUtils;
 
+	/**
+	 * Authentication for login
+	 * @param loginRequest Username and password
+	 * @return
+	 */
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -78,6 +84,11 @@ public class AuthController {
 												 roles));
 	}
 
+	/**
+	 * If no user has been created, an admin account is created. Following accounts will have user role assigned.
+	 * @param signUpRequest User credentials consisting of name, address, email etc.
+	 * @return
+	 */
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {

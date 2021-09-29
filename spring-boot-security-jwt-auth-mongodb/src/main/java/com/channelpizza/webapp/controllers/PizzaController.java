@@ -16,6 +16,10 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Controller class to handle pizza related operations
+ * @author Melih Yayli
+ */
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/v1/pizzas")
@@ -35,6 +39,7 @@ public class PizzaController {
 		return pizzaRepository.findAll();
 	}
 
+
 	@GetMapping("{pizzaId}")
 	public Optional<Pizza> getAllPizza(@PathVariable ("pizzaId") String pizzaId) {
 		return pizzaRepository.findById(pizzaId);
@@ -43,6 +48,11 @@ public class PizzaController {
 	@GetMapping("/ingredients/{ingredient}")
 	public List<Pizza> getByIngredients(@PathVariable ("ingredient") String pizzaIngredient) { return pizzaRepository.findPizzasByPizzaIngredientsContaining(pizzaIngredient);}
 
+	/**
+	 * Method to create pizza, if pizza name is not already been taken.
+	 * @param pizza pizza name, price, ingredients, and image URL
+	 * @return
+	 */
 	@PostMapping("")
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Object> createPizza(@Valid @RequestBody Pizza pizza) {
@@ -83,6 +93,12 @@ public class PizzaController {
 
 	}
 
+	/**
+	 * Method to update pizza items in database
+	 * @param newPizza pizza object containing new specifications
+	 * @param pizzaId id of pizza to be edited
+	 * @return {void}
+	 */
 	@PutMapping("/{pizzaId}")
 	@PreAuthorize("hasRole('ADMIN')")
 	Pizza updatePizza(@RequestBody Pizza newPizza, @PathVariable String pizzaId) {

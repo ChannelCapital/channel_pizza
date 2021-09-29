@@ -6,6 +6,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.Size;
 
+/**
+ * Entity for roles
+ */
 @Document(collection = "roles")
 public class Role {
   @Id
@@ -16,7 +19,6 @@ public class Role {
   private ERole name;
 
   public Role() {
-
   }
 
   public Role(ERole name) {

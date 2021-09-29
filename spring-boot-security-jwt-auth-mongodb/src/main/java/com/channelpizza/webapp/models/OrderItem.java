@@ -1,8 +1,11 @@
 package com.channelpizza.webapp.models;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Entity for each item in an order
+ * @author Melih Yayli
+ */
 @Document
 public class OrderItem {
 

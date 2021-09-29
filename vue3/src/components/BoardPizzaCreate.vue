@@ -71,7 +71,6 @@ export default {
         .required("Pizza name is required!")
         .min(3, "Must be at least 3 characters!")
         .max(20, "Must be maximum 20 characters!"),
-
       pizzaPrice: yup
         .number()
         .required("Price is required!")
