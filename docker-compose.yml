@@ -1,0 +1,29 @@
+version: '3.7'
+services: 
+  mongo: 
+    image: mongo
+    ports: 
+      - "27017:27017"
+    volumes: 
+      - "./init-mongo.js:/docker-entryponint-initdb.d/init-mongo.js:ro"
+      - "c:/data/db:/data/db"
+    #environment:
+    #  - MONGO_INITDB_DATABASE= PizzaDB
+    #  - MONGO_INITDB_ROOT_USERNAME= myAdmin
+    #  - MONGO_INITDB_ROOT_PASSWORD= abc123
+
+    restart: always
+
+  spring: 
+    build: ./pizzaDeliveryApp
+    external_links: 
+      - mongo
+    ports: 
+      - "8080:8080"
+
+  frontend: 
+    build: ./pizzadeliveryappv4
+    external_links: 
+      - spring
+    ports: 
+      - "8081:8081"
