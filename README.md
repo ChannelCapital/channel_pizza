@@ -4,7 +4,7 @@
 
 * Users can also login and application require login in order to make an order. You can ignore payment module.
 
-* When user entering address information front-end should autocomplete the addresses using UK post code with [PostCodes API](https://postcodes.io/).
+* When user entering address information front-end should autocomplete the **nearest** addresses using UK post code with [PostCodes API](https://postcodes.io/).
 
 * User interface and software architecture of the application is up to you, for technology stack of the application you are free to use any framework and language for backend, frontend and database but we **_highly_** recommend you to use **Java Spring Boot** for backend, **Vue.js** for frontend and **MongoDB** for database.
 
